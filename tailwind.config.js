@@ -36,6 +36,9 @@ export default {
         'figma': '0px 13px 14px -9px rgba(101, 53, 187, 0.33)',
         'test':'0 35px 35px rgba(0, 0, 0, 0.25)'
       
+      },
+      fontFamily:{
+        'Cairo':['Cairo', 'sans-serif']
       }
     },
     

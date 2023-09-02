@@ -2,20 +2,27 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import Button from './components/Button'
+import Navbar from './components/Navbar'
+import Home from './pages/Home'
 
+import {Route, Routes} from 'react-router-dom'
 
 function App() {
   
 
-  
+
 
   return (
-    <div className='w-full flex justify-center items-center h-screen bg-slate-100'>
-      <div className='flex flex-col justify-center gap-10 w-32'>
-        <Button primary >فعال</Button>
-        <Button secondary >فعال</Button>
-        <Button surface >فعال</Button>
-      </div>
+    <div className='font-Cairo bg-transparent text-surface'>
+      <Navbar/>
+
+      <Routes>
+        <Route path='/' element={<Home/>} />
+        <Route/>
+        <Route/>
+        <Route/>
+      </Routes>
+
     </div>
     
   )
