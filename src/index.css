@@ -1,3 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+body {
+
+    background: linear-gradient(165.56deg, #6535BB 0%, #299DE9 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+
+}
