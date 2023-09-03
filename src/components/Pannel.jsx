@@ -9,10 +9,7 @@ import image1 from '../eventsImages/image1.png'
 
 function Pannel() {
     const events = [
-                    {element:<FeaturedEventCard link='' text='FTC' src={image1}/>},
-                    {element:<FeaturedEventCard link='' text='FTC' src={image1}/>},
-                    {element:<FeaturedEventCard link='' text='FTC' src={image1}/>},
-                    {element:<FeaturedEventCard link='' text='FTC' src={image1}/>},
+                //  objects
     ]
 
     var settings = {
@@ -25,6 +22,8 @@ function Pannel() {
         slidesToShow: 4,
         slidesToScroll: 3,
         initialSlide: 0,
+        centerMode: true,
+        centerPadding: "360px",
         responsive: [
           {
             breakpoint: 1024,
@@ -32,7 +31,8 @@ function Pannel() {
               slidesToShow: 3,
               slidesToScroll: 3,
               infinite: true,
-              dots: true
+              dots: true,
+              centerMode: false,
             }
           },
           {
@@ -40,27 +40,27 @@ function Pannel() {
             settings: {
               slidesToShow: 2,
               slidesToScroll: 2,
-              initialSlide: 2
+              initialSlide: 2,
+              centerMode: false,
             }
           },
           {
             breakpoint: 480,
             settings: {
               slidesToShow: 2,
-              slidesToScroll: 2
+              slidesToScroll: 2,
+              centerMode: false,
+              
             }
           }
         ]
       };
 
-    const style = ''
+
 
     
-  return <div className="  ">
-   
-   
+  return <div className="">
       <div className="flex justify-center ">
-      
         <Slider {...settings} className="w-full">
            <FeaturedEventCard link='' text='FTC' src={image1}/>
            <FeaturedEventCard link='' text='FTC' src={image1}/>

@@ -43,7 +43,7 @@ function Navbar() {
         </div>
     </div>
     {isOpen && 
-        <div onClick={handleClose} className='flex flex-col px-10 pt-4 gap-y-8 justify-start  h-screen'>
+        <div onClick={handleClose} className={`flex flex-col px-10 pt-4 gap-y-8 justify-start animate-fade-down transition duration-150 ease-out hover:ease-in animate-once h-screen`}>
             {/* here is a bug , when clicking on text it works on button it don't sol: wrap the button with link component  */}
             <Button className='' surface>انضم الينا</Button>
             <Button className='' outline><Link className='' to='/'>الصفحة الرئيسية</Link></Button>
