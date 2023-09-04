@@ -3,6 +3,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 
+import React from 'react';
+import Swiper from 'react-id-swiper';
 
 import FeaturedEventCard from "./FeaturedEventCard"
 import image1 from '../eventsImages/image1.png'
@@ -14,13 +16,13 @@ function Pannel() {
 
     var settings = {
         dots: true,
-        infinite: true,
+        infinite: false,
         speed: 2000,
         autoplay: true,
         autoplaySpeed: 3000,
         cssEase: "linear",
-        slidesToShow: 4,
-        slidesToScroll: 3,
+        slidesToShow: 3,
+        slidesToScroll: 1,
         initialSlide: 0,
         centerMode: true,
         centerPadding: "360px",
@@ -32,7 +34,8 @@ function Pannel() {
               slidesToScroll: 3,
               infinite: true,
               dots: true,
-              centerMode: false,
+              centerMode: true,
+              centerPadding: "100px",
             }
           },
           {
@@ -56,7 +59,7 @@ function Pannel() {
         ]
       };
 
-
+     
 
     
   return <div className="">
@@ -68,8 +71,7 @@ function Pannel() {
            <FeaturedEventCard link='' text='FTC' src={image1}/>
         </Slider>
       </div>
-    
-  </div>
+    </div>
 
 }
 

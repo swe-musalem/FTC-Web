@@ -23,10 +23,10 @@ function Navbar() {
 
     //  * copied from figma
     return <div>
-    <div className="text-surface" style={{background: 'linear-gradient(100.2deg, #6535BB -8.36%, #2A9EEA 187.38%),linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08))'}}>
+    <div className="text-surface overflow-x-hidden" style={{background: 'linear-gradient(100.2deg, #6535BB -8.36%, #2A9EEA 187.38%),linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08))'}}>
         <div className='flex sm:justify-around justify-between px-4 items-center py-4'>
             <img src={logoNavbar} className=' w-36 sm:w-48' />
-            <div className='sm:flex justify-between w-1/2 gap-x-4 mx-4 hidden'>
+            <div className='lg:flex hidden md:justify-center lg:justify-around  gap-x-4   md:whitespace-wrap '>
 
                 <Link to='/about'>من نحن</Link>
                 <Link to='/gradutes'>خريجو النادي</Link>
@@ -35,15 +35,15 @@ function Navbar() {
                 <Link to='/events'>الاحداث و الفعاليات </Link>
                 <Link to='/'>الصفحة الرئيسية</Link>
             </div>
+                <Button className={' hidden lg:block  '} surface>انضم الينا</Button>
 
-            <Button className={' hidden sm:block '} surface>انضم الينا</Button>
 
-            <RxHamburgerMenu onClick={handleClick} className='sm:hidden text-3xl'/>
+            <RxHamburgerMenu onClick={handleClick} className='lg:hidden text-3xl'/>
            
         </div>
     </div>
-    {isOpen && 
-        <div onClick={handleClose} className={`flex flex-col px-10 pt-4 gap-y-8 justify-start animate-fade-down transition duration-150 ease-out hover:ease-in animate-once h-screen`}>
+    
+        <div onClick={handleClose} className={`flex flex-col  ${isOpen ? 'block' : 'hidden'} px-10 pt-4 gap-y-8 justify-start animate-fade-down transition duration-150 ease-out hover:ease-in animate-once h-screen`}>
             {/* here is a bug , when clicking on text it works on button it don't sol: wrap the button with link component  */}
             <Button className='' surface>انضم الينا</Button>
             <Button className='' outline><Link className='' to='/'>الصفحة الرئيسية</Link></Button>
@@ -54,7 +54,7 @@ function Navbar() {
             <Button className='' outline ><Link to='/about'>من نحن</Link></Button>
 
         </div>
-    }
+    
     </div>
 }
 
