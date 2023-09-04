@@ -1,5 +1,6 @@
 
 import Pannel from "../components/Pannel";
+import SocialMedia from "../components/SocialMedia";
 
 function Home() {
     return(
@@ -8,6 +9,7 @@ function Home() {
                 <div className="w-full text-center text-3xl my-4" >معرفة •  تقنية • ابداع</div>
             </div>
             <Pannel/>
+            <SocialMedia/>
         </div>
     )
 }

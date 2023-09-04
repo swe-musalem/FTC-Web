@@ -22,7 +22,7 @@ function Pannel() {
         autoplaySpeed: 3000,
         cssEase: "linear",
         slidesToShow: 3,
-        slidesToScroll: 1,
+        slidesToScroll: 3,
         initialSlide: 0,
         centerMode: true,
         centerPadding: "360px",
