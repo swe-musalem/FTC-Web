@@ -1,6 +1,7 @@
 
 import Pannel from "../components/Pannel";
 import SocialMedia from "../components/SocialMedia";
+import Activites from "../components/Activities";
 
 function Home() {
     return(
@@ -10,6 +11,7 @@ function Home() {
             </div>
             <Pannel/>
             <SocialMedia/>
+            <Activites/>
         </div>
     )
 }
