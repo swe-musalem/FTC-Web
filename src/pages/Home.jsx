@@ -5,7 +5,7 @@ import SocialIcons from "../components/SocialIcons";
 
 function Home() {
   return (
-    <div className="flex flex-col justify-start gap-y-10 h-screen overflow-x-hidden animate-flip-down animate-once">
+    <div className="flex flex-col justify-start gap-y-10  overflow-x-hidden animate-flip-down animate-once">
       <SocialIcons />
       <div>
         <div className="w-full text-center text-3xl my-4">

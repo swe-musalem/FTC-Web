@@ -20,7 +20,8 @@ export default {
           90: '#EBDCFF',
           95: '#F7EDFF',
         },
-
+        "socailbg":"#517fdb80",
+        "socailborder":"#ffffff33",
         'primary':'#6535BB',
         'secondary':'#00639B',
         'tertiary':'#006971',

@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import Button from './components/Button'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
+import Footer from './components/Footer'
 
 import {Route, Routes} from 'react-router-dom'
 
@@ -22,7 +23,7 @@ function App() {
         <Route/>
         <Route/>
       </Routes>
-
+    <Footer />
     </div>
     
   )
