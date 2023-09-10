@@ -64,32 +64,37 @@ function Pannel() {
 
      
 
-    const style = 'object-cover'
-    // const Imageheight = 'sm:w-1/2 h-5/6 object-fit'
+    const imageStyle = 'object-contain w-full h-64 w-full'
+   
    
     return (
       
       // slideInterval={2000}
-        <Carousel  pauseOnHover  className="sm:w-1/2 sm:mx-auto w-3/4 mx-auto h-5/6 sm:h-1/2">
+        <Carousel  pauseOnHover slideInterval={5000}  className="sm:w-1/2 w-72 mx-auto h-64  sm:h-72">
           <img
             alt="..."
             src={image1}
+            className={imageStyle}
           />
           <img
             alt="..."
             src={image2}
+            className={imageStyle}
           />
           <img
             alt="..."
             src={image1}
+            className={imageStyle}
           />
           <img
             alt="..."
             src={image2}
+            className={imageStyle}
           />
           <img
             alt="..."
             src={image1}
+            className={imageStyle}
           />
         </Carousel>
       

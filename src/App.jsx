@@ -1,10 +1,8 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import Button from './components/Button'
+
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import Footer from './components/Footer'
+import Events from './pages/Events'
 
 import {Route, Routes} from 'react-router-dom'
 
@@ -19,7 +17,7 @@ function App() {
 
       <Routes>
         <Route path='/' element={<Home/>} />
-        <Route/>
+        <Route path='/events' element={<Events/>}/>
         <Route/>
         <Route/>
       </Routes>

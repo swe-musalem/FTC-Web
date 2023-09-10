@@ -12,7 +12,9 @@ function Home() {
           معرفة • تقنية • ابداع
         </div>
       </div>
-      <Pannel />
+      <div>
+        <Pannel />
+      </div>
       <SocialMedia />
       <Activites />
     </div>
