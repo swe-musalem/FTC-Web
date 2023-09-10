@@ -9,7 +9,7 @@ function Events(params) {
 
     const handleSelect = (event,choice)=>{
         setSelectValue(choice.value)
-        
+        console.log(choice)
     }
 
     const choices = [
@@ -27,7 +27,7 @@ function Events(params) {
             </div>
             <div className="bg-surface w-full h-screen text-primary flex justify-around items-start py-4">
                 {choices.map((choice)=>{
-                    return <Button key={choice.value} className={`${selectValue === choice.value && 'bg-black' }`} primary onClick={(event)=>{handleSelect(event,choice);}}   >{choice.label}</Button>
+                    return <Button key={choice.value} className={`${selectValue === choice.value && 'bg-btncolor-secondary' }`} primary onClick={(event)=>{handleSelect(event,choice);}}   >{choice.label}</Button>
                 })}
             </div>
         </div>
