@@ -3,6 +3,8 @@ import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import Footer from './components/Footer'
 import Events from './pages/Events'
+import Plans from './pages/Plans'
+import CollageMap from './pages/CollageMap'
 
 import {Route, Routes} from 'react-router-dom'
 
@@ -18,8 +20,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>} />
         <Route path='/events' element={<Events/>}/>
-        <Route/>
-        <Route/>
+        <Route path='/plans' element={<Plans/>} />
+        <Route path='/collagemap' element={<CollageMap/>} />
       </Routes>
     <Footer />
     </div>

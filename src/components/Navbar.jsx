@@ -32,8 +32,8 @@ function Navbar() {
           <div className="lg:flex hidden md:justify-center lg:justify-around  gap-x-4   md:whitespace-wrap ">
             <Link to="/about">من نحن</Link>
             <Link to="/gradutes">خريجو النادي</Link>
-            <Link to="/map">خريطة كلية الحاسب</Link>
-            <Link to="/resources">مصادر و خطط التخصصات</Link>
+            <Link to="/collagemap">خريطة كلية الحاسب</Link>
+            <Link to="/plans">مصادر و خطط التخصصات</Link>
             <Link to="/events">الاحداث و الفعاليات </Link>
             <Link to="/">الصفحة الرئيسية</Link>
           </div>
@@ -70,13 +70,13 @@ function Navbar() {
           </Button>
         </Link>
 
-        <Link to="/resources">
+        <Link to="/plans">
           <Button className="w-full" outline>
             مصادر و خطط التخصصات
           </Button>
         </Link>
 
-        <Link to="/map">
+        <Link to="/collagemap">
           <Button className="w-full" outline>
             خريطة كلية الحاسب
           </Button>

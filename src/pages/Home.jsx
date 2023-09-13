@@ -17,6 +17,7 @@ function Home() {
       </div>
       <SocialMedia />
       <Activites />
+      
     </div>
   );
 }

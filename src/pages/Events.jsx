@@ -19,7 +19,7 @@ function Events(params) {
     ]
 
     return (
-        <div className="flex flex-col items-center w-full text-center ">
+        <div className="flex flex-col items-center w-full text-center animate-flip-down animate-once">
             <div className="p-10">
                 <div className="text-3xl font-bold">الاحداث والفعاليات</div>
                 <div></div>
