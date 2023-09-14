@@ -5,6 +5,7 @@ import Footer from './components/Footer'
 import Events from './pages/Events'
 import Plans from './pages/Plans'
 import CollageMap from './pages/CollageMap'
+import About from './pages/About'
 
 import {Route, Routes} from 'react-router-dom'
 
@@ -22,6 +23,7 @@ function App() {
         <Route path='/events' element={<Events/>}/>
         <Route path='/plans' element={<Plans/>} />
         <Route path='/collagemap' element={<CollageMap/>} />
+        <Route path='/about' element={<About/>}></Route>
       </Routes>
     <Footer />
     </div>

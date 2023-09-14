@@ -3,13 +3,11 @@ import  Button  from "../components/Button";
 
 function Events(params) {
 
-    const [isSelected, setIsSelected] = useState(false);
 
     const [selectValue, setSelectValue] = useState('');
 
     const handleSelect = (event,choice)=>{
         setSelectValue(choice.value)
-        console.log(choice)
     }
 
     const choices = [
