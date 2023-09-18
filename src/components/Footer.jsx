@@ -12,7 +12,7 @@ function Footer() {
       }}
     >
       <p className="ps mt-au text-white">
-        Future Technology Club 2011-{new Date().getFullYear()}
+       &copy; Future Technology Club 2011-{new Date().getFullYear()}
       </p>
     </div>
   ,document.body);

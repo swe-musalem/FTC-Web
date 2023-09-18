@@ -6,6 +6,7 @@ import Events from './pages/Events'
 import Plans from './pages/Plans'
 import CollageMap from './pages/CollageMap'
 import About from './pages/About'
+import DBContext from './firebase/DBContext'
 
 import {Route, Routes} from 'react-router-dom'
 
@@ -17,6 +18,7 @@ function App() {
   return (
     <div className='font-Cairo bg-transparent text-surface'>
       <Navbar/>
+      {/* <DBContext/> */}
 
       <Routes>
         <Route path='/' element={<Home/>} />
