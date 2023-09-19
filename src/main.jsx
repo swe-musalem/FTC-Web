@@ -8,11 +8,9 @@ import { DBContextProvider } from './firebase/DBContext.jsx'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <DBContextProvider >
     <React.StrictMode>
         <BrowserRouter>
           <App />
         </BrowserRouter>
-    </React.StrictMode>,
-    </DBContextProvider>
+    </React.StrictMode>
 )
