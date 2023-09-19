@@ -13,7 +13,7 @@ import {BsLaptop} from 'react-icons/bs'
 import {GiTeamIdea} from 'react-icons/gi'
 
 function About() {
-    return <div className="flex flex-col items-center text-center  animate-flip-down animate-once">
+    return <div className="flex flex-col items-center text-center  animate-flip-down animate-once ">
         <div className='py-20'>
             <div className='text-2xl'>من نحن</div>
             <RxDividerHorizontal className='text-3xl mx-auto'/>
@@ -21,7 +21,7 @@ function About() {
         </div>
 
         <div className='bg-white grid grid-cols-2 sm:grid-cols-6 place-content-start  gap-y-8 gap-x-2 w-full sm:px-44 px-10 sm:py-4 text-onSurface'>
-            <div className='text-primary col-span-full  pt-10 text-xl'>من نحن</div>
+            {/* <div className='text-primary col-span-full  pt-10 text-xl'>من نحن</div> */}
             <div className=' flex flex-col sm:flex-row justify-between p-4 sm:py-12 items-center col-span-full  text-sm sm:leading-relaxed bg-surface rounded-md drop-shadow-xl'>
                 <div>ينظم ويشرف نادي تقنية المستقبل على فعاليات تقنية مختلفة داخل وخارج الجامعة بهدف الارتقاء بالمجتمع الطلابي في الجامعة والمجتمع التقني في المملكة ككُل</div>
                 <div> تقنية المستقبل هو أحد الأندية الطلابية في كلية علوم الحاسب والمعلومات بجامعة الملك سعود.‏هو مقر للإبداع التقني ومصدر لبث المعرفة التقنية في المملكة.</div>
@@ -89,7 +89,7 @@ function About() {
             </div>
             <div className='col-span-full text-primary text-xl'>قيم النادي</div>
 
-            <div className='flex flex-col gap-y-4 pb-2 sm:flex-row sm:justify-between col-span-full'>
+            <div className='flex flex-col gap-y-4 pb-10 sm:flex-row sm:justify-between col-span-full'>
                 <div className='drop-shadow-xl bg-surface rounded-md py-4 px-16'>
                     <RiServiceLine className='text-tertiary text-xl mx-auto'/>
                     <div>التضامن</div>

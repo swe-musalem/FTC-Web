@@ -2,6 +2,7 @@ import Pannel from "../components/Pannel";
 import SocialMedia from "../components/SocialMedia";
 import Activites from "../components/Activities";
 import SocialIcons from "../components/SocialIcons";
+import About from "./About";
 
 function Home() {
   return (
@@ -16,7 +17,7 @@ function Home() {
         <Pannel />
       </div>
       <SocialMedia />
-      <Activites />
+      <About />
       
     </div>
   );
