@@ -6,8 +6,7 @@ import Events from './pages/Events'
 import Plans from './pages/Plans'
 import CollageMap from './pages/CollageMap'
 import About from './pages/About'
-import DBContext from './firebase/DBContext'
-
+import AddEvents from './adminPage/addEvents'
 import {Route, Routes} from 'react-router-dom'
 
 function App() {
@@ -25,7 +24,9 @@ function App() {
         <Route path='/events' element={<Events/>}/>
         <Route path='/plans' element={<Plans/>} />
         <Route path='/collagemap' element={<CollageMap/>} />
-        <Route path='/about' element={<About/>}></Route>
+        <Route path='/about' element={<About/>}/>
+        
+        <Route path='/admin' element={<AddEvents/>}/>
       </Routes>
     <Footer />
     </div>

@@ -1,15 +1,20 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase,set,ref } from "firebase/database";
 
+import { createContext } from "react";
+
+const DBContext = createContext();
 
 
-function AddEvents(params) {
+
+
+
+function DBContextProvider({children}) {
+
+
+
     
-}
 
-
-
-function DBContext() {
     const firebaseConfig = {
         apiKey: "AIzaSyBuU9wYwa3AYahH84g2WYokGprKZR2uqXs",
         authDomain: "fir-demo-256e4.firebaseapp.com",
@@ -23,8 +28,25 @@ function DBContext() {
       
       const app = initializeApp(firebaseConfig);
       const database = getDatabase()
-      set(ref(database,'events'),{
-        event:'someevent'
-      })
+
+      const handleSubmit = (label,type,date,name)=>{
+        console.log('logged')
+         set(ref(database,'events'),{
+        event:{
+          'label':label,
+          'type':type,
+          'date':date,
+          'name':name,
+          }
+        })
+      }
+      
+
+      return <DBContext.Provider value={{handleSubmit}}>
+            {children}
+      </DBContext.Provider>
+
 }
-export default DBContext
+
+export default DBContext;
+export {DBContextProvider};
