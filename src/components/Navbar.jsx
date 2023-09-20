@@ -2,11 +2,12 @@ import { useState } from "react";
 import logoNavbar from "../assets/logoNavbar.svg";
 import Button from "./Button";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { Link } from "react-router-dom";
+import { Link ,NavLink} from "react-router-dom";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-
+  const hoverClassNav = "relative after:bg-ftcpallete-95 after:absolute after:h-0.5 after:w-0 after:bottom-0 after:left-0 after:top-6 hover:after:w-full after:transition-all after:duration-700"
+  const clickClassNav = "relative after:bg-ftcpallete-95 after:absolute after:h-0.5 after:w-0 after:bottom-0 after:left-0 after:top-6 after:w-full"
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
@@ -30,12 +31,12 @@ function Navbar() {
         <div className="flex sm:justify-around justify-between px-4 items-center py-4">
           <img src={logoNavbar} className=" w-36 sm:w-48" />
           <div className="lg:flex hidden md:justify-center lg:justify-around  gap-x-4   md:whitespace-wrap ">
-            <Link to="/about">من نحن</Link>
-            <Link to="/gradutes">خريجو النادي</Link>
-            <Link to="/collagemap">خريطة كلية الحاسب</Link>
-            <Link to="/plans">مصادر و خطط التخصصات</Link>
-            <Link to="/events">الاحداث و الفعاليات </Link>
-            <Link to="/">الصفحة الرئيسية</Link>
+          <NavLink to="/about" className={({isActive})=>{return isActive ? hoverClassNav +clickClassNav : hoverClassNav}}>من نحن</NavLink>
+            <NavLink to="/gradutes" className={({isActive})=>{return isActive ? hoverClassNav +clickClassNav : hoverClassNav}}>خريجو النادي</NavLink>
+            <NavLink to="/collagemap" className={({isActive})=>{return isActive ? hoverClassNav +clickClassNav : hoverClassNav}}>خريطة كلية الحاسب</NavLink>
+            <NavLink to="/plans" className={({isActive})=>{return isActive ? hoverClassNav +clickClassNav : hoverClassNav}}>مصادر و خطط التخصصات</NavLink>
+            <NavLink to="/events" className={({isActive})=>{return isActive ? hoverClassNav +clickClassNav : hoverClassNav}}>الاحداث و الفعاليات </NavLink>
+            <NavLink to="/" className={({isActive})=>{return isActive ? hoverClassNav +clickClassNav : hoverClassNav}}>الصفحة الرئيسية</NavLink>
           </div>
           <Button className={" hidden lg:block  "} surface>
             انضم الينا
