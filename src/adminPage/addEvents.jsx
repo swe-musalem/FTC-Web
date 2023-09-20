@@ -1,21 +1,38 @@
 
-import { createContext, useState } from "react";
+import {  useState } from "react";
 
 import { initializeApp } from "firebase/app";
 import { getDatabase,set,ref } from "firebase/database";
-import { Label,Textarea } from "flowbite-react";
+import { Label,Textarea,Dropdown } from "flowbite-react";
+import Button from '../components/Button'
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 
 
 function AddEvents() {
     
     
-    // const {handleSubmit} = useContext(DBContext);
-    
-    // console.log(typeof handleSubmit)
+   
     const [label,setLabel] = useState('');
-    const [type,setType] = useState('email');
-    const [date,setDate] = useState('2022');
-    const [name,setName] = useState('aoo');
+    
+    const [type,setType] = useState('event');
+
+
+    const dropDown = [
+      {value:'email'},
+      {value:'share'},
+      {value:'event'},
+    ]
+
+    const renderDropdown = dropDown.map( (item) => {
+
+      return <Dropdown.Item key={item.value} onClick={()=>{setType(item.value)}} >{item.value}</Dropdown.Item>
+    })
+
+
+    const [startDate,setStartDate] = useState(new Date());
+    const [name,setName] = useState('');
 
     const firebaseConfig = {
         apiKey: "AIzaSyBuU9wYwa3AYahH84g2WYokGprKZR2uqXs",
@@ -36,10 +53,13 @@ function AddEvents() {
             data:{
           'label':label,
           'type':type,
-          'date':date,
+          'startDate':startDate.toDateString(),
           'name':name,
           }
         })
+        setLabel('')
+        setName('')
+        
       }
       
 
@@ -48,14 +68,55 @@ function AddEvents() {
         setLabel(e.target.value)
     }
 
+    const handelSelectChange = (data)=> {
+      setStartDate(data)
+    }
+
+    const handleDateChange = (data)=>{
+      setStartDate(data)
+      
+
+    }
    
+    const handelName = (e)=>{
+      setName(e.target.value)
+    }
 
 
+    return <div className=" p-4 flex flex-col justify-around gap-y-8 w-1/2">
+      
+           
+            <Textarea 
+            onChange={handelLabel} 
+            value={label}
+            className="w-1/2"
+            id="name"
+            placeholder="Enter event Title:  "
+             />
+            <Dropdown
+              label={type}
+              size="sm"
+              
+              >
+                {renderDropdown}
+                
+              </Dropdown>
 
-    return <div>
-            <Textarea onChange={handelLabel} helperText={'Event name that will appear to users'} className="w-1/2" />
-            {/* <Button primary onClick={handelSendToDBButton}>Add event</Button> */}
-            <button onClick={handleSubmit}>SEND</button>
+            <DatePicker
+              className="text-tertiary rounded-md"
+              onSelect={handelSelectChange}
+              selected={startDate}
+              onChange={handleDateChange}/>
+              
+              <Textarea 
+            onChange={handelName} 
+            value={name}
+            className="w-1/2"
+            id="name"
+            placeholder="Enter Name :  "
+             />
+            <Button primary  onClick={handleSubmit}  >Add event</Button>
+
             
     </div>
     
