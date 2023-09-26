@@ -2,7 +2,7 @@
 import {  useState } from "react";
 
 import { initializeApp } from "firebase/app";
-import { getDatabase,set,ref } from "firebase/database";
+import { getDatabase,set,ref,get,child } from "firebase/database";
 import { Label,Textarea,Dropdown } from "flowbite-react";
 import Button from '../components/Button'
 import DatePicker from "react-datepicker";
@@ -48,8 +48,10 @@ function AddEvents() {
       const app = initializeApp(firebaseConfig);
       const database = getDatabase()
 
-      const handleSubmit = () => {
-         set(ref(database,'events/'+label),{
+      const handleSubmit =  () => {
+        checkPassword();
+        if (isPasswordCorrect) {
+          set(ref(database,'events/'+label),{
             data:{
           'label':label,
           'type':type,
@@ -60,7 +62,37 @@ function AddEvents() {
         setLabel('')
         setName('')
         
+      }else{
+        console.log('couldnt submit')
       }
+       
+    }
+        
+
+      const [passwordInput, setPasswordInput] = useState('');
+
+      const [isPasswordCorrect, setIsPasswordCorrect] = useState(false);
+
+      const handlePassword = (e) => {
+        setPasswordInput(e.target.value)
+      }
+      
+      const checkPassword = async () => {
+        await get(child(ref(database), `password`)).then((password) => {
+          if (password.exists()) {
+              if (password.val() == passwordInput) {
+                console.log('they are equal')
+                setIsPasswordCorrect(true)
+                return true
+              }
+              console.log(isPasswordCorrect)
+          } else {
+            console.log('wrong pass')
+            return false;
+          }
+        })
+      }
+     
       
 
 
@@ -115,6 +147,15 @@ function AddEvents() {
             id="name"
             placeholder="Enter Name :  "
              />
+
+          <Textarea 
+            onChange={handlePassword} 
+            value={passwordInput}
+            className="w-1/2"
+            id="pass"
+            placeholder="Enter password :  "
+             />
+
             <Button primary  onClick={handleSubmit}  >Add event</Button>
 
             
