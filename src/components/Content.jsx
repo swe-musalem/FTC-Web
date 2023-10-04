@@ -1,26 +1,26 @@
 import React from "react";
 import { MdGroups, MdChat, MdMailOutline } from "react-icons/md";
 
-function Content({ date, title, name, type }) {
+function Content({ date, title, name, type ,...rest}) {
   let icon = <div></div>;
   switch (type) {
-    case "event":
+    case "events":
       icon = (
-        <div className="flex flex-col rounded-lg p-4 m-2 bg-ftcpallete-95">
+        <div className="flex flex-col rounded-lg p-4  m-2 bg-ftcpallete-95">
           <MdGroups size="3rem" className="" color="#6535BB" />
           <div className="text-center text-primary"> فعالية </div>
         </div>
       );
       break;
-    case "mail":
+    case "scaleup":
       icon = (
         <div className="flex flex-col rounded-lg p-4 m-2 bg-ftcpallete-95">
           <MdMailOutline size="3rem" className="" color="#6535BB" />
-          <div className="text-center text-primary"> اعلان </div>
+          <div className="text-center text-primary"> سكيل اب </div>
         </div>
       );
       break;
-    case "e":
+    case "blog":
       icon = (
         <div className="flex flex-col rounded-lg p-4 m-2 bg-ftcpallete-95">
           <MdChat size="3rem" className="" color="#6535BB" />
@@ -34,7 +34,7 @@ function Content({ date, title, name, type }) {
   }
 
   return (
-    <div className="my-4 font-Cairo text-black " style={{ direction: "rtl" }}>
+    <div className="my-4 font-Cairo text-black w-96" {...rest} style={{ direction: "rtl" }}>
       <div className="container flex flex-row ">
         {icon}
         <div className="flex flex-col justify-center gap-3 mr-3">
