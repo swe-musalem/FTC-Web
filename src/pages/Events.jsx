@@ -60,7 +60,7 @@ function Events(params) {
                     {data.map((value)=>{
                         console.log(value.category , " " , selectValue)
                          if (value.category == selectValue) {
-                            return <Content key={value.id} type={value.category} title={value.title}/>
+                            return <Content key={value.id} type={value.category} date={value.date}  title={value.title}/>
                          }
                     })}
                 </div>

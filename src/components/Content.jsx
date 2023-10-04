@@ -6,7 +6,7 @@ function Content({ date, title, name, type ,...rest}) {
   switch (type) {
     case "events":
       icon = (
-        <div className="flex flex-col rounded-lg p-4  m-2 bg-ftcpallete-95">
+        <div className="flex flex-col items-center rounded-lg p-4  m-2 bg-ftcpallete-95">
           <MdGroups size="3rem" className="" color="#6535BB" />
           <div className="text-center text-primary"> فعالية </div>
         </div>
@@ -14,7 +14,7 @@ function Content({ date, title, name, type ,...rest}) {
       break;
     case "scaleup":
       icon = (
-        <div className="flex flex-col rounded-lg p-4 m-2 bg-ftcpallete-95">
+        <div className="flex flex-col items-center rounded-lg p-4 m-2 bg-ftcpallete-95">
           <MdMailOutline size="3rem" className="" color="#6535BB" />
           <div className="text-center text-primary"> سكيل اب </div>
         </div>
@@ -22,7 +22,7 @@ function Content({ date, title, name, type ,...rest}) {
       break;
     case "blog":
       icon = (
-        <div className="flex flex-col rounded-lg p-4 m-2 bg-ftcpallete-95">
+        <div className="flex flex-col items-center rounded-lg p-4 m-2 bg-ftcpallete-95">
           <MdChat size="3rem" className="" color="#6535BB" />
           <div className="text-center text-primary"> مشاركة </div>
         </div>
@@ -37,12 +37,12 @@ function Content({ date, title, name, type ,...rest}) {
     <div className="my-4 font-Cairo text-black w-96" {...rest} style={{ direction: "rtl" }}>
       <div className="container flex flex-row ">
         {icon}
-        <div className="flex flex-col justify-center gap-3 mr-3">
-          <div className="text-gray-400"> {date} </div>
+        <div className="flex flex-col justify-center gap-y-2  mr-3">
           <div>
             <h2>{title}</h2>
           </div>
           <div>{name}</div>
+          <div className="text-gray-400"> {date} </div>
         </div>
       </div>
     </div>
