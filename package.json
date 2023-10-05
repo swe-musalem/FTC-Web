@@ -22,9 +22,11 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
     "react-id-swiper": "^4.0.0",
+    "react-loading-skeleton": "^3.3.1",
     "react-pdf": "^7.3.3",
     "react-router-dom": "^6.15.0",
     "react-slick": "^0.29.0",
+    "react-spinners-kit": "^1.9.1",
     "slick-carousel": "^1.8.1",
     "swiper": "^10.2.0",
     "tailwindcss-animated": "^1.0.1"

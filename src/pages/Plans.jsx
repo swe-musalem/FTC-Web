@@ -1,14 +1,19 @@
 import {RxDividerHorizontal} from 'react-icons/rx'
 import Button from '../components/Button'
- 
- function Plans() {
+import { useEffect } from 'react'
 
+ function Plans({title}) {
+
+    useEffect(() => {
+        document.title = title
+      
+        return () => null }, [])
 
 
     const boxStyle = 'flex flex-col items-center gap-y-2 shadow-xl p-4 bg-white rounded-lg w-40'
     
 
-    return  <div className='flex flex-col items-center text-center animate-flip-down animate-once'>
+    return  <div className='flex flex-col items-center text-center animate-fade-down animate-once animate-ease-linear'>
                 <div className='p-10'>
                     <div className='text-2xl'>مصادر وخطط التخصصات</div>
                     <RxDividerHorizontal className='mx-auto text-[2rem]'/>

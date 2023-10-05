@@ -2,25 +2,34 @@ import { useEffect, useState } from "react";
 import  Button  from "../components/Button";
 import axios from "axios";
 import Content from '../components/Content'
+import { PongSpinner } from "react-spinners-kit";
+
+
+
 // import FeaturedEventCard from "../components/FeaturedEventCard";
 
-function Events(params) {
 
-   
+function Events({title}) {
+
+   const [isloading, setIsLoading] = useState(true);
 
 
     useEffect(() => {
-        
+        document.title = title
+        setIsLoading(true)
         axios.get('https://web-production-7c8a.up.railway.app/api/events/').then( response =>{
-            console.log(response.data)
-            setData([...response.data])
+            setTimeout(() => {
+                setData([...response.data])
+                setIsLoading(false)
+            }, 2000);
 
         }
            
         ).catch(error => 
             console.log(error)
-            )
-        
+            ).finally(()=>{
+            })
+       
         return () => {
             
         };
@@ -30,6 +39,7 @@ function Events(params) {
 
     const [selectValue, setSelectValue] = useState('scaleup');
 
+    
 
     // at first render before user choses is set to true to list all
 
@@ -44,7 +54,7 @@ function Events(params) {
     ]
 
     return (
-        <div className="flex flex-col items-center w-full text-center animate-flip-down animate-once">
+        <div className="flex flex-col items-center w-full text-center animate-fade-down animate-once animate-ease-linear">
             <div className="p-10">
                 <div className="text-3xl font-bold">الاحداث والفعاليات</div>
                 <div></div>
@@ -57,13 +67,27 @@ function Events(params) {
                     })}
                 </div>
                 <div className="w-full flex flex-col items-center ">
-                    {data.map((value)=>{
-                        console.log(value.category , " " , selectValue)
-                         if (value.category == selectValue) {
-                            return <Content key={value.id} type={value.category} date={value.date}  title={value.title}/>
-                         }
-                    })}
+                {!isloading ? (
+                        data.map((value) => {
+                            if (value.category === selectValue) {
+                            return (
+                                <Content
+                                key={value.id}
+                                type={value.category}
+                                date={value.date}
+                                title={value.title}/> 
+                            );
+                            }
+                            return null;
+                        })
+                        ) : (
+                        <div className="h-screen">
+                           <PongSpinner size={150} className='mx-auto mt-12' color="#6535BB" />
+                        </div>
+                        )}                                      
+
                 </div>
+                
             </div>
         </div>
     )
