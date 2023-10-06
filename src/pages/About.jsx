@@ -11,9 +11,17 @@ import {PiProjectorScreenChartDuotone} from 'react-icons/pi'
 import {BiBook} from 'react-icons/bi'
 import {BsLaptop} from 'react-icons/bs'
 import {GiTeamIdea} from 'react-icons/gi'
+import { useEffect } from 'react'
 
-function About() {
-    return <div className="flex flex-col items-center text-center  animate-flip-down animate-once ">
+function About({title}) {
+
+    useEffect(() => {
+        document.title = title
+      
+        return () => null }, [])
+
+
+    return <div className="flex flex-col items-center text-center  animate-fade-down animate-once animate-ease-linear ">
         <div className='py-20'>
             <div className='text-2xl'>من نحن</div>
             <RxDividerHorizontal className='text-3xl mx-auto'/>
