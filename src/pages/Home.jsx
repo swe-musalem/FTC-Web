@@ -9,6 +9,7 @@ import { useEffect } from "react";
 function Home({title}) {
   useEffect(() => {
     document.title = title
+    document.body.classList.add = 'overscroll-none'
   
     return () => null }, [])
     
