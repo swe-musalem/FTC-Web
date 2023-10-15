@@ -108,9 +108,9 @@ function Gradutes({ title }) {
   return (
     <div className="flex flex-col items-center text-center  animate-fade-down animate-once animate-ease-linear">
       <div className="py-20">
-        <div className="text-2xl">من نحن</div>
+        <div className="text-2xl">خريجو النادي </div>
         <RxDividerHorizontal className="text-3xl mx-auto" />
-        <div>مجتمع فعّال وبيئة خصبة للتعلم والابداع</div>
+        <div>تعرف على خريجي نادي تقنية المستقبل بمختلف المجالات التقنية </div>
       </div>
       <div className=" flex flex-wrap justify-center sm:gap-x-6 gap-x-4 gap-y-5 bg-white w-full sm:px-44 py-10 px-2 sm:py-10 ">
         {students.map((student) => {

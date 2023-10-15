@@ -34,7 +34,7 @@ function Content({ date, title, name, type ,...rest}) {
   }
 
   return (
-    <div className="my-4 font-Cairo text-black w-96" {...rest} style={{ direction: "rtl" }}>
+    <div className="my-4 font-Cairo text-black w-96 animate-fade-down animate-once animate-ease-linear" {...rest} style={{ direction: "rtl" }}>
       <div className="container flex flex-row ">
         {icon}
         <div className="flex flex-col justify-center gap-y-2  mr-3">

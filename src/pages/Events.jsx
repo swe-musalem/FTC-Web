@@ -66,7 +66,7 @@ function Events({title}) {
                         return <Button key={choice.value} className={`${selectValue === choice.value && 'bg-btncolor-secondary' }`} primary onClick={(event)=>{handleSelect(event,choice);}}   >{choice.label}</Button>
                     })}
                 </div>
-                <div className="w-full flex flex-col items-center ">
+                <div className="w-full flex flex-col items-center animate-fade-down animate-once animate-ease-linear">
                 {!isloading ? (
                         data.map((value) => {
                             if (value.category === selectValue) {
@@ -75,7 +75,9 @@ function Events({title}) {
                                 key={value.id}
                                 type={value.category}
                                 date={value.date}
-                                title={value.title}/> 
+                                title={value.title}
+                                /> 
+                                
                             );
                             }
                             return null;
