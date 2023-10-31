@@ -110,7 +110,7 @@ function Gradutes({ title }) {
       <div className="py-20">
         <div className="text-2xl">خريجو النادي </div>
         <RxDividerHorizontal className="text-3xl mx-auto" />
-        <div>تعرف على خريجي نادي تقنية المستقبل بمختلف المجالات التقنية </div>
+        <div className="px-6">تعرف على خريجي نادي تقنية المستقبل بمختلف المجالات التقنية </div>
       </div>
       <div className=" flex flex-wrap justify-center sm:gap-x-6 gap-x-4 gap-y-5 bg-white w-full sm:px-44 py-10 px-2 sm:py-10 ">
         {students.map((student) => {

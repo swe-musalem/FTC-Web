@@ -24,37 +24,37 @@ import { useEffect } from 'react'
                     <div className={boxStyle}>
                         <div className='text-tertiary'>هندسة البرمجيات</div>
                         <Button primary>
-                            <a target='_blank' href="https://youtube.com">الخطة</a>
+                            <a target='_blank' href="https://ccis.ksu.edu.sa/sites/ccis.ksu.edu.sa/files/imce_images/swe_new_plan.pdf">الخطة</a>
                         </Button>
                         <Button secondary>
-                            <a href='' target="_blank" >المصادر</a>
+                            <a href='https://drive.google.com/drive/folders/1IWFVQHpgGzymTaVBLgXnkx3EfIDXERQB' target="_blank" >المصادر</a>
                         </Button>
                     </div>
                     <div className={boxStyle}>
                         <div className='text-tertiary'>علوم حاسب</div>
                         <Button primary>
-                            <a target='_blank' href="https://youtube.com">الخطة</a>
+                            <a target='_blank' >الخطة</a>
                         </Button>
                         <Button secondary>
-                            <a href='' target="_blank" >المصادر</a>
+                            <a  target="_blank" >المصادر</a>
                         </Button>
                     </div>
                     <div className={boxStyle}>
                         <div className='text-tertiary'>هندسة الحاسب</div>
                         <Button primary>
-                            <a target='_blank' href="https://youtube.com">الخطة</a>
+                            <a target='_blank' href="https://ccis.ksu.edu.sa/en/ce/new-ce-bsc-program">الخطة</a>
                         </Button>
                         <Button secondary >
-                            <a href='' target="_blank" >المصادر</a>
+                            <a href='https://drive.google.com/drive/folders/1c9IRoA6TSBLii7dw6LB4aZ0jmj_5KBcf' target="_blank" >المصادر</a>
                         </Button>
                     </div>
                     <div className={boxStyle}>
                         <div className='text-tertiary'> نظم المعلومات</div>
                         <Button primary>
-                            <a target='_blank' href="https://youtube.com">الخطة</a>
+                            <a target='_blank' href="https://dar.ksu.edu.sa/sites/dar.ksu.edu.sa/files/imce_images/c1.pdf">الخطة</a>
                         </Button>
                         <Button secondary>
-                            <a href='' target="_blank" >المصادر</a>
+                            <a href='https://drive.google.com/folderview?id=1baAYk3j1JHtCcCxvnUZSkJziMQi-OXPr' target="_blank" >المصادر</a>
                         </Button>
                     </div>
                 </div>
