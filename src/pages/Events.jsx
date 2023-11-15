@@ -60,8 +60,8 @@ function Events({title}) {
                 <div></div>
                 <div className="pt-8">تسلسل زمني يستعرض انجازات النادي واهم الاحداث والفعاليات</div>
             </div>
-            <div className="bg-surface w-full  text-primary flex  flex-col items-start py-4">
-                <div className="text-primary flex w-full justify-around items-start">
+            <div className="bg-ftc-surface w-full  text-ftc-primary flex  flex-col items-start py-4">
+                <div className="text-ftc-primary flex w-full justify-around items-start">
                     {choices.map((choice)=>{
                         return <Button key={choice.value} className={`${selectValue === choice.value && 'bg-btncolor-secondary' }`} primary onClick={(event)=>{handleSelect(event,choice);}}   >{choice.label}</Button>
                     })}

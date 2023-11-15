@@ -22,7 +22,7 @@ function Navbar() {
   return (
     <div>
       <div
-        className="text-surface overflow-x-hidden"
+        className="text-ftc-surface overflow-x-hidden"
         style={{
           background:
             "linear-gradient(100.2deg, #6535BB -8.36%, #2A9EEA 187.38%),linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08))",
@@ -38,9 +38,11 @@ function Navbar() {
             <NavLink to="/events" className={({isActive})=>{return isActive ? hoverClassNav +clickClassNav : hoverClassNav}}>الاحداث و الفعاليات </NavLink>
             <NavLink to="/" className={({isActive})=>{return isActive ? hoverClassNav +clickClassNav : hoverClassNav}}>الصفحة الرئيسية</NavLink>
           </div>
-          <Button className={" hidden lg:block  "} surface>
-            انضم الينا
-          </Button>
+          
+        
+            <Link to='/apply'>
+            <Button className={" hidden lg:block  "} surface>انضم الينا</Button>
+            </Link>
 
           <RxHamburgerMenu
             onClick={handleClick}
@@ -54,12 +56,17 @@ function Navbar() {
         className={`flex flex-col  ${
           isOpen ? "block" : "hidden"
         } px-10 pt-4 gap-y-8 justify-start animate-fade-down transition duration-150 ease-out hover:ease-in animate-once h-screen`}
-      >
-        {/* here is a bug , when clicking on text it works on button it don't sol: wrap the button with link component  */}
-        <Button className="" surface>
-          انضم الينا
-        </Button>
-        <Link className="" to="/">
+        >
+        
+        <Link to='/apply'>
+          <Button className="w-full" surface>
+            انضم الينا
+          </Button>
+        </Link>
+       
+
+
+        <Link to="/">
           <Button className="w-full" outline>
             الصفحة الرئيسية
           </Button>

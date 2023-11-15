@@ -6,7 +6,7 @@ import Number from "./Number";
 
 function SocialMedia(params) {
   const style = "flex flex-col items-center text-center";
-  const logoStyle = "text-[4rem] bg-opacity-10 bg-surface p-2 rounded-[6px]";
+  const logoStyle = "text-[4rem] bg-opacity-10 bg-ftc-surface p-2 rounded-[6px]";
   const numberStyle = "text-2xl";
 
   return (

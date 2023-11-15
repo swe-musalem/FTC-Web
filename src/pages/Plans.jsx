@@ -20,9 +20,9 @@ import { useEffect } from 'react'
                     <div>خطط تخصصات كلية الحاسب وتقنية المعلومات ومصادر المقررات</div>
                 </div>
                 
-                <div className='bg-surface  w-full py-10 md:p-28 flex flex-wrap justify-center gap-x-12 gap-y-10'>
+                <div className='bg-ftc-surface  w-full py-10 md:p-28 flex flex-wrap justify-center gap-x-12 gap-y-10'>
                     <div className={boxStyle}>
-                        <div className='text-tertiary'>هندسة البرمجيات</div>
+                        <div className='text-ftc-tertiary'>هندسة البرمجيات</div>
                         <Button primary>
                             <a target='_blank' href="https://ccis.ksu.edu.sa/sites/ccis.ksu.edu.sa/files/imce_images/swe_new_plan.pdf">الخطة</a>
                         </Button>
@@ -31,7 +31,7 @@ import { useEffect } from 'react'
                         </Button>
                     </div>
                     <div className={boxStyle}>
-                        <div className='text-tertiary'>علوم حاسب</div>
+                        <div className='text-ftc-tertiary'>علوم حاسب</div>
                         <Button primary>
                             <a target='_blank' >الخطة</a>
                         </Button>
@@ -40,7 +40,7 @@ import { useEffect } from 'react'
                         </Button>
                     </div>
                     <div className={boxStyle}>
-                        <div className='text-tertiary'>هندسة الحاسب</div>
+                        <div className='text-ftc-tertiary'>هندسة الحاسب</div>
                         <Button primary>
                             <a target='_blank' href="https://ccis.ksu.edu.sa/en/ce/new-ce-bsc-program">الخطة</a>
                         </Button>
@@ -49,7 +49,7 @@ import { useEffect } from 'react'
                         </Button>
                     </div>
                     <div className={boxStyle}>
-                        <div className='text-tertiary'> نظم المعلومات</div>
+                        <div className='text-ftc-tertiary'> نظم المعلومات</div>
                         <Button primary>
                             <a target='_blank' href="https://dar.ksu.edu.sa/sites/dar.ksu.edu.sa/files/imce_images/c1.pdf">الخطة</a>
                         </Button>

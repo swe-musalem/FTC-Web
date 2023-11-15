@@ -8,7 +8,7 @@ function Content({ date, title, name, type ,...rest}) {
       icon = (
         <div className="flex flex-col items-center rounded-lg p-4  m-2 bg-ftcpallete-95">
           <MdGroups size="3rem" className="" color="#6535BB" />
-          <div className="text-center text-primary"> فعالية </div>
+          <div className="text-center text-ftc-primary"> فعالية </div>
         </div>
       );
       break;
@@ -16,7 +16,7 @@ function Content({ date, title, name, type ,...rest}) {
       icon = (
         <div className="flex flex-col items-center rounded-lg p-4 m-2 bg-ftcpallete-95">
           <MdMailOutline size="3rem" className="" color="#6535BB" />
-          <div className="text-center text-primary"> سكيل اب </div>
+          <div className="text-center text-ftc-primary"> سكيل اب </div>
         </div>
       );
       break;
@@ -24,7 +24,7 @@ function Content({ date, title, name, type ,...rest}) {
       icon = (
         <div className="flex flex-col items-center rounded-lg p-4 m-2 bg-ftcpallete-95">
           <MdChat size="3rem" className="" color="#6535BB" />
-          <div className="text-center text-primary"> مشاركة </div>
+          <div className="text-center text-ftc-primary"> مشاركة </div>
         </div>
       );
       break;
