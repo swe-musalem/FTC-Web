@@ -3,21 +3,30 @@ import { useState } from "react"
 import DropDown from '../components/DropDown'
 import Button from "../components/Button";
 
-import { HiInformationCircle } from 'react-icons/hi';
 import { Alert } from 'flowbite-react';
 import { useForm,  } from "react-hook-form"
+import axios from "axios";
+import { PongSpinner } from "react-spinners-kit";
 
 function Apply() {
 
 
     
+    const {
+        register,
+        reset,
+        setValue,
+        watch,
+        getValues,
+        formState: {errors,isSubmitSuccessful},
+        handleSubmit,
+    } = useForm();
 
     const [major, setMajor] = useState('');
-    console.log(major)
     const majorOptions = [
         {
             label:'هندسة البرمجيات',
-            dbvalue:'swe'
+            dbvalue:'SWE'
         },
         {
             label:'نظم المعلومات',
@@ -34,25 +43,51 @@ function Apply() {
     ]
 
 
+    const [serverErrors, setServerErrors] = useState([]);
 
+    const [isSubmittingToServer, setIsSubmittingToServer] = useState(false);
 
+    const [isSubmitToServerSuceess, setIsSubmitToServerSuceess] = useState(false);
 
-    const {
-        register,
-        reset,
-        formState: {errors, isSubmitting},
-        handleSubmit,
-    } = useForm();
+    const isApplyingOpen = false;
 
+    const allErrors = Object.values(errors).map(key=>{return <div key={key.message}> * {key.message}</div>})
+    const allServerErrors = serverErrors.map(value=>{return <div key={value} >{value}</div> })
     
-    const allErrors = Object.values(errors).map(key=>{return <div key={key.message}>{key.message}</div>})
+    const numberRegex = /^[\d+]+$/;
     
-    const numberRegex = /^\d+$/;
+
 
     const onSubmit = async (data)=>{
-        data = {...data,major:major}
-        console.log(data)
-        await new Promise((resolve)=>setTimeout(resolve,2000))
+
+        const phone_number_without_prefix = watch('phone_number')
+        
+        
+        data = {
+            ...data,
+            major:major,
+            phone_number:'+966'+phone_number_without_prefix
+        }
+
+        setIsSubmittingToServer(true)
+        axios.post('https://web-production-7c8a.up.railway.app/api/apllicant/',data)
+        .then(()=>{
+            if (isSubmitSuccessful) {
+                reset()
+                setServerErrors([])
+                setIsSubmittingToServer(false)
+                setIsSubmitToServerSuceess(true)
+                setMajor('التخصص')
+            }
+        })
+        .catch(error=>{
+            const arrayofErrors = Object.values(error.response.data).flat(1)
+            setServerErrors(arrayofErrors)
+            setIsSubmittingToServer(false)
+        })
+    
+      
+    
     }
 
     return <div className="  flex flex-col items-center ">
@@ -66,9 +101,22 @@ function Apply() {
                 <div className="bg-ftc-surface  drop-shadow-xl px-4 py-4 rounded-md md:grid grid-cols-2 gap-x-2">
                     <div className="w-full col-span-2 ">
                         {/* this boolean expression checks the whole error object */}
-                       { Object.keys(errors).length > 1 && <Alert color='failure' >
+                       { Object.keys(errors).length > 0  && 
+                       <Alert color='failure' >
                         {allErrors}
                         </Alert>}
+
+                        {serverErrors.length > 0 && 
+                        <Alert color='failure'>
+                            {allServerErrors}
+                            </Alert>}
+
+                        {isSubmitToServerSuceess && 
+                            <Alert color='success'>
+                                <div>نم الارسال بنجاح</div>
+                            </Alert>
+                        }
+
                     </div>
                     <Input label='الاسم' 
                         invalid={errors.name}
@@ -85,39 +133,32 @@ function Apply() {
                         invalid={errors.email}
                         formHook={
                             {...register('email',{
-                                required:'الايميل مطلوب',
+                                required:'الايميل مطلوب - ',
                                 
                             })}
                         }
                     />
                    
                     <Input label='رقم الجوال'
-                         invalid={errors.number}
+                         invalid={errors.phone_number}
                          placeholder={'50xxxxxxx'}
                          formHook={
-                             {...register('number',{
+                             {...register('phone_number',{
                                  required:'رقم الجوال مطلوب',
                                  
-                                 minLength:{
-                                    value:9,
-                                    message:' رقم الجوال مكون من 9 ارقام '
-                                 },
-                                 maxLength:{
-                                    value:9,
-                                    message:'  رقم الجوال مكون من 9 ارقام '
-                                 },
+                                 
                                  pattern: {
                                     value: numberRegex,
-                                    message:'رقم الجوال مكون من ارقام فقط بدون مسافات'
+                                    message:'رقم الجوال مكون من ارقام فقط بدون مسافات - '
                                 }
                              })}
                          }
                     /> 
                     <Input label='الرقم الجامعي' 
                         
-                        invalid={errors.collageId}
+                        invalid={errors.college_id}
                         formHook={
-                            {...register('collageId',{
+                            {...register('college_id',{
                                 required:'الرقم الجامعي مطلوب',
                                 pattern: {
                                     value: numberRegex,
@@ -136,13 +177,56 @@ function Apply() {
                             setValue={setMajor}
                         />
                     </div>
-                    <Input label="هل لديك خبرة برمجية ؟" textarea />
-                    <Input label="تحدث عن نفسك" textarea />
-                    <Input label="هل لديك خبرة في التصميم والمونتاج ؟" textarea />
-                    <Input label="هل لديك اعمال تطوعية سابقة    ؟" textarea />
-                    <Input label="أي ملاحظات ؟" textarea />
+                    <Input label="هل لديك خبرة برمجية ؟" 
+                        invalid={errors.experince_in_programing}
+                        textarea 
+                        formHook={
+                            {...register('experince_in_programing',{
+                                required:'الرجاء عدم ترك خانة "هل لديك حبرة برمجية ؟"'
+                                })}
+                            }
+                        
+                    
+                    />
+                    <Input label="تحدث عن نفسك"  textarea
+                        invalid={errors.about_me}
+                         formHook={
+                            {...register('about_me',{
+                                required:'الرجاء عدم ترك خانة "تحدث عن نفسك"'
+                                })}
+                            }
+                    
+                    />
+                    <Input label="هل لديك خبرة في التصميم والمونتاج ؟" textarea 
+                        invalid={errors.experince_in_design}
+                         formHook={
+                            {...register('experince_in_design',{
+                                required:'الرجاء عدم ترك خانة التصميم والمونتاج فارغة'
+                                })}
+                            }
+                    
+                    />
+                    <Input label="هل لديك اعمال تطوعية سابقة    ؟" textarea 
+                        invalid={errors.volunteering}
+                         formHook={
+                            {...register('volunteering',{
+                                required:'الرجاء عدم ترك خانة الاعمال التطوعية فارغة'
+                                })}
+                            }
+                    
+                    />
+                    <Input label="أي ملاحظات ؟" textarea 
+                          formHook={
+                            {...register('notes',{
+                                
+                                })}
+                            }
+                    />
                     <div className="w-full col-span-2 flex justify-center">
-                        <Button type='submit' primary className={`md:w-3/4 w-full disabled:opacity-25`} disabled={ true } >{!isSubmitting && <div>ارسال</div>}</Button>
+                        <Button type='submit' primary className={`md:w-3/4 w-full flex justify-center disabled:opacity-25`} disabled={ (!isApplyingOpen) || isSubmittingToServer } >
+                            {!isSubmittingToServer && <div>ارسال</div>} 
+                            {isSubmittingToServer && <PongSpinner size={50} color='#ffffff'/> }
+                            </Button>
                     </div>
                 </div>
             </form>
