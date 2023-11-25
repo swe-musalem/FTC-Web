@@ -1,0 +1,75 @@
+
+import axios from "axios"
+import logo from '../../assets/logoLogin.svg'
+import { TextInput } from "@tremor/react";
+import { FaRegUser } from "react-icons/fa";
+import { RiLockPasswordLine } from "react-icons/ri";
+import Button from "../../components/Button";
+import { useState } from "react";
+import { Alert } from "flowbite-react";
+
+
+function Login() {
+
+   
+
+    const [username, setUsername] = useState('');
+    const handleUsernameChange = (e)=>{
+        
+        setUsername(e.target.value)
+    }
+    const [password, setPassword] = useState('');
+    const handlePasswordChange = (e)=>{
+        
+        setPassword(e.target.value)
+    }
+
+    const [isLoading, setIsLoading] = useState(false);
+    const [isLoggedin, setIsLoggedin] = useState(false);
+    const [serverErrors, setServerErrors] = useState('');
+    const [token, setToken] = useState('');
+
+
+    const handleSubmit = ()=>{
+        setIsLoading(true)
+        axios.post ('http://localhost:9000/login',{
+            "user":username,
+            "password":password
+        }).then(response=>{
+            console.log(response.data.access_token)
+            setIsLoading(false)
+            setIsLoggedin(true)
+            setToken(response.data.access_token)
+            setServerErrors('')
+        }).catch(err=>{
+            setServerErrors(err.response.data.detail)
+            setIsLoading(false)
+        })
+    }
+
+
+    return <div className="h-scree flex justify-center">
+            {/* left side */}
+            <div className="h-screen sm:w-4/6 flex justify-center bg-ftc-primary">
+                <img src={logo} className="w-1/2" alt="" srcset="" />
+            </div>
+
+            <div className="h-screen w-full bg-white flex  justify-center items-center" dir="rtl">
+                <div className=" h-1/2 w-1/2">
+                    <div className="text-3xl font-bold">تسجيل الدخول</div>
+                    <div className="text-gray-400">سجل دخولك في الداشبورد العظيم</div>
+                    <div className="mt-8 flex flex-col gap-y-4">
+                        {isLoggedin && <Alert color='success'>تم التسجيل</Alert>}
+                        {serverErrors && <Alert color='failure'>{serverErrors}</Alert>}
+                        <div className="font-semibold text-sm">اسم المستخدم</div>
+                        <TextInput icon={FaRegUser} placeholder="username" value={username} onChange={handleUsernameChange} />
+                        <div className="font-semibold text-sm">كلمة المرور</div>
+                        <TextInput icon={RiLockPasswordLine} placeholder="password" value={password} onChange={handlePasswordChange} />
+                        <Button primary className='font-bold' onClick={handleSubmit} disabled={isLoading}> تسجيل الدخول</Button>
+                    </div>
+                </div>
+            </div>
+    </div>
+}
+
+export default Login

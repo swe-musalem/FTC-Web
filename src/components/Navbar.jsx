@@ -36,7 +36,7 @@ function Navbar() {
             <NavLink to="/collagemap" className={({isActive})=>{return isActive ? hoverClassNav +clickClassNav : hoverClassNav}}>خريطة كلية الحاسب</NavLink>
             <NavLink to="/plans" className={({isActive})=>{return isActive ? hoverClassNav +clickClassNav : hoverClassNav}}>مصادر و خطط التخصصات</NavLink>
             <NavLink to="/events" className={({isActive})=>{return isActive ? hoverClassNav +clickClassNav : hoverClassNav}}>الاحداث و الفعاليات </NavLink>
-            <NavLink to="/" className={({isActive})=>{return isActive ? hoverClassNav +clickClassNav : hoverClassNav}}>الصفحة الرئيسية</NavLink>
+            <NavLink to="" className={({isActive})=>{return isActive ? hoverClassNav +clickClassNav : hoverClassNav}}>الصفحة الرئيسية</NavLink>
           </div>
           
         
