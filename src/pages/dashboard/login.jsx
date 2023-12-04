@@ -7,6 +7,7 @@ import { RiLockPasswordLine } from "react-icons/ri";
 import Button from "../../components/Button";
 import { useState } from "react";
 import { Alert } from "flowbite-react";
+import { useNavigate  } from "react-router-dom";
 
 
 function Login() {
@@ -27,8 +28,10 @@ function Login() {
     const [isLoading, setIsLoading] = useState(false);
     const [isLoggedin, setIsLoggedin] = useState(false);
     const [serverErrors, setServerErrors] = useState('');
-    const [token, setToken] = useState('');
+    
 
+
+    const navigate = useNavigate()
 
     const handleSubmit = ()=>{
         setIsLoading(true)
@@ -36,11 +39,13 @@ function Login() {
             "user":username,
             "password":password
         }).then(response=>{
-            console.log(response.data.access_token)
+            console.log(response)
             setIsLoading(false)
             setIsLoggedin(true)
-            setToken(response.data.access_token)
+            // setToken(response.data.access_token)
+            localStorage.setItem('token',response.data.access_token)
             setServerErrors('')
+            navigate('/dashboard')
         }).catch(err=>{
             setServerErrors(err.response.data.detail)
             setIsLoading(false)

@@ -31,6 +31,8 @@ export default {
           tertiary: "#006971",
           onSurface: "#191C1D",
           surface: "#FBFDFD",
+          gray:"#F2F6FA",
+          coal:"#191C1D"
         },
         'btncolor': {
           'primary': '#6535BB',

@@ -43,7 +43,7 @@ function Apply() {
     ]
 
 
-    const [serverErrors, setServerErrors] = useState([]);
+    const [serverErrors, setServerErrors] = useState('');
 
     const [isSubmittingToServer, setIsSubmittingToServer] = useState(false);
 
@@ -52,7 +52,7 @@ function Apply() {
     const isApplyingOpen = false;
 
     const allErrors = Object.values(errors).map(key=>{return <div key={key.message}> * {key.message}</div>})
-    const allServerErrors = serverErrors.map(value=>{return <div key={value} >{value}</div> })
+    // const allServerErrors = serverErrors.map(value=>{return <div key={value} >{value}</div> })
     
     const numberRegex = /^[\d+]+$/;
     
@@ -60,30 +60,32 @@ function Apply() {
 
     const onSubmit = async (data)=>{
 
-        const phone_number_without_prefix = watch('phone_number')
+        // const phone_number_without_prefix = watch('phone_number')
         
         
         data = {
             ...data,
             major:major,
-            phone_number:'+966'+phone_number_without_prefix
+            
         }
 
         setIsSubmittingToServer(true)
-        axios.post('https://web-production-7c8a.up.railway.app/api/apllicant/',data)
-        .then(()=>{
+        axios.post('http://127.0.0.1:9000/applicant',data)
+        .then((res)=>{
             if (isSubmitSuccessful) {
                 reset()
                 setServerErrors([])
                 setIsSubmittingToServer(false)
                 setIsSubmitToServerSuceess(true)
                 setMajor('التخصص')
+                console.log(res)
             }
         })
         .catch(error=>{
-            const arrayofErrors = Object.values(error.response.data).flat(1)
-            setServerErrors(arrayofErrors)
+            // const arrayofErrors = Object.values(error.response.data).flat(1)
+            setServerErrors(error.response.data.detail)
             setIsSubmittingToServer(false)
+            console.log(error)
         })
     
       
@@ -107,13 +109,13 @@ function Apply() {
                         </Alert>}
 
                         {serverErrors.length > 0 && 
-                        <Alert color='failure'>
-                            {allServerErrors}
+                        <Alert color='failure' className="mt-2">
+                            {serverErrors}
                             </Alert>}
 
                         {isSubmitToServerSuceess && 
                             <Alert color='success'>
-                                <div>نم الارسال بنجاح</div>
+                                <div>تم الارسال بنجاح</div>
                             </Alert>
                         }
 
@@ -178,10 +180,10 @@ function Apply() {
                         />
                     </div>
                     <Input label="هل لديك خبرة برمجية ؟" 
-                        invalid={errors.experince_in_programing}
+                        invalid={errors.experience_in_programming}
                         textarea 
                         formHook={
-                            {...register('experince_in_programing',{
+                            {...register('experience_in_programming',{
                                 required:'الرجاء عدم ترك خانة "هل لديك حبرة برمجية ؟"'
                                 })}
                             }
@@ -198,9 +200,9 @@ function Apply() {
                     
                     />
                     <Input label="هل لديك خبرة في التصميم والمونتاج ؟" textarea 
-                        invalid={errors.experince_in_design}
+                        invalid={errors.experience_in_design}
                          formHook={
-                            {...register('experince_in_design',{
+                            {...register('experience_in_design',{
                                 required:'الرجاء عدم ترك خانة التصميم والمونتاج فارغة'
                                 })}
                             }
@@ -224,8 +226,9 @@ function Apply() {
                     />
                     <div className="w-full col-span-2 flex justify-center">
                         <Button type='submit' primary className={`md:w-3/4 w-full flex justify-center disabled:opacity-25`} disabled={ (!isApplyingOpen) || isSubmittingToServer } >
-                            {!isSubmittingToServer && <div>ارسال</div>} 
+                            {!isSubmittingToServer && isApplyingOpen && <div>ارسال</div>} 
                             {isSubmittingToServer && <PongSpinner size={50} color='#ffffff'/> }
+                            {!isApplyingOpen && <div> التقديم مغلق </div>}
                             </Button>
                     </div>
                 </div>

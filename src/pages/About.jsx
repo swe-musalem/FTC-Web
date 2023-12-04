@@ -22,7 +22,7 @@ function About({title}) {
 
 
     return <div className="flex flex-col items-center text-center  animate-fade-down animate-once animate-ease-linear ">
-        <div className='py-20'>
+        <div className='py-2'>
             <div className='text-2xl'>من نحن</div>
             <RxDividerHorizontal className='text-3xl mx-auto'/>
             <div>مجتمع فعّال وبيئة خصبة للتعلم والابداع</div>
@@ -30,9 +30,9 @@ function About({title}) {
 
         <div className='bg-white grid grid-cols-2 sm:grid-cols-6 place-content-start  gap-y-8 gap-x-2 w-full sm:px-44 px-10 sm:py-4 text-ftc-onSurface'>
             {/* <div className='text-primary col-span-full  pt-10 text-xl'>من نحن</div> */}
-            <div className=' flex flex-col sm:flex-row justify-between p-4 sm:py-12 items-center col-span-full  text-sm sm:leading-relaxed bg-ftc-surface rounded-md drop-shadow-xl'>
-                <div>ينظم ويشرف نادي تقنية المستقبل على فعاليات تقنية مختلفة داخل وخارج الجامعة بهدف الارتقاء بالمجتمع الطلابي في الجامعة والمجتمع التقني في المملكة ككُل</div>
-                <div> تقنية المستقبل هو أحد الأندية الطلابية في كلية علوم الحاسب والمعلومات بجامعة الملك سعود.‏هو مقر للإبداع التقني ومصدر لبث المعرفة التقنية في المملكة.</div>
+            <div className=' flex flex-col sm:flex-row justify-center p-4 sm:py-12 items-center col-span-full  text-sm sm:leading-relaxed gap-x-2 gap-y-2'>
+                <div className='flex flex-col sm:flex-row justify-between p-6 sm:py-12 items-center col-span-3 sm:w-1/2  text-sm sm:leading-relaxed bg-ftc-surface rounded-md drop-shadow-xl'>ينظم ويشرف نادي تقنية المستقبل على فعاليات تقنية مختلفة داخل وخارج الجامعة بهدف الارتقاء بالمجتمع الطلابي في الجامعة والمجتمع التقني في المملكة ككُل</div>
+                <div className='flex flex-col sm:flex-row justify-between p-6 sm:py-12 items-center col-span-3 sm:w-1/2 text-sm sm:leading-relaxed bg-ftc-surface rounded-md drop-shadow-xl'> تقنية المستقبل هو أحد الأندية الطلابية في كلية علوم الحاسب والمعلومات بجامعة الملك سعود.‏هو مقر للإبداع التقني ومصدر لبث المعرفة التقنية في المملكة.</div>
             </div>
             <div className=' bg-ftc-surface drop-shadow-xl col-span-full sm:col-span-3 p-2 rounded-md'>
                 <div className=' flex flex-row-reverse items-center p-4'>
