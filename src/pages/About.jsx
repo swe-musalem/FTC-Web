@@ -22,7 +22,7 @@ function About({title}) {
 
 
     return <div className="flex flex-col items-center text-center  animate-fade-down animate-once animate-ease-linear ">
-        <div className='py-2'>
+        <div className='py-20'>
             <div className='text-2xl'>من نحن</div>
             <RxDividerHorizontal className='text-3xl mx-auto'/>
             <div>مجتمع فعّال وبيئة خصبة للتعلم والابداع</div>
