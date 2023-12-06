@@ -9,7 +9,9 @@ import SideBar from "./components/SideBar"
 
 function DashboardApp(){
     
-    return <Routes>
+    return <div className="font-cairo">
+
+    <Routes>
             
         <Route path="/dashboard" element={<SideBar/>}>
             <Route  element={<ProtectedRoute/>} >
@@ -18,6 +20,7 @@ function DashboardApp(){
             <Route  path="login" element={<Login/>}></Route>
         </Route>
     </Routes>
+    </div>
 }
 
 

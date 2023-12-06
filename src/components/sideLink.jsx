@@ -1,8 +1,18 @@
-import { Link } from "react-router-dom";
 
+import { useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import { useRef } from 'react';
 
-function sideLink({}) {
-    return <Link >
-        
-    </Link>
+function SideLink({SideIcon,children,...rest}) {
+
+    
+
+    return <NavLink {...rest}>
+            <div  className="flex justify-between items-center" >
+                {children}
+                {SideIcon}
+            </div>
+    </NavLink>
 }
+
+export default SideLink

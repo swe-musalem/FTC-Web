@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import logoNavbar from "../assets/logoNavbar.svg";
 import Button from "./Button";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { Link ,NavLink} from "react-router-dom";
+import { Link ,NavLink, useHref} from "react-router-dom";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const hoverClassNav = "relative after:bg-ftcpallete-95 after:absolute after:h-0.5 after:w-0 after:bottom-0 after:right-0 after:top-6 hover:after:w-full after:transition-all after:duration-700"
   const clickClassNav = "relative after:bg-ftcpallete-95 after:absolute after:h-0.5 after:w-0 after:bottom-0 after:right-0 after:top-6 after:w-full"
+  
+
+
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
@@ -16,13 +19,17 @@ function Navbar() {
     setIsOpen(false);
   };
 
+  const mobileNav = useRef(null);
+  
+
   // ! refactor links in objects to not repeat code twice
 
   //  * copied from figma
+
   return (
-    <div>
+    <div className="top-0 sticky z-10">
       <div
-        className="text-ftc-surface overflow-x-hidden"
+        className="text-ftc-surface overflow-x-hidden "
         style={{
           background:
             "linear-gradient(100.2deg, #6535BB -8.36%, #2A9EEA 187.38%),linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08))",
@@ -53,9 +60,14 @@ function Navbar() {
 
       <div
         onClick={handleClose}
+        ref={mobileNav}
+        style={{
+          background:
+            "linear-gradient(100.2deg, #6535BB -8.36%, #2A9EEA 187.38%),linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08))",
+        }}
         className={`flex flex-col  ${
           isOpen ? "block" : "hidden"
-        } px-10 pt-4 gap-y-8 justify-start animate-fade-down transition duration-150 ease-out hover:ease-in animate-once h-screen`}
+        } px-10 pt-4 gap-y-8 justify-start animate-fade-down transition duration-150 ease-out hover:ease-in animate-once bg-ftc-primary h-screen  `}
         >
         
         <Link to='/apply'>

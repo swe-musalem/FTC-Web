@@ -65,19 +65,19 @@ function Home() {
           status: "active",
         },
         {
-          name: "Elisabeth Baume-Schneider",
+          name: "Elisabdesdth Baume-Schneider",
           Role: "Federal Councillor",
           departement: "The Federal Department of Justice and Police (FDJP)",
           status: "active",
         },
         {
-          name: "Elisabeth Baume-Schneider",
+          name: "Elisabethdsa Baume-Schneider",
           Role: "Federal Councillor",
           departement: "The Federal Department of Justice and Police (FDJP)",
           status: "active",
         },
         {
-          name: "Elisabeth Baume-Schneider",
+          name: "Elisabethds Baume-Schneider",
           Role: "Federal Councillor",
           departement: "The Federal Department of Justice and Police (FDJP)",
           status: "active",
@@ -114,7 +114,7 @@ function Home() {
 
 
 
-    return <div className="bg-ftc-gray w-full p-24" >
+    return <div className="bg-ftc-gray w-full p-24 overflow-y-auto" >
         <div className="text-3xl mb-4">المتقدمين</div>
         <div className="flex justify-around items-start h-full">
                 <Card className="sm:w-3/5 h-3/4 overflow-y-auto">

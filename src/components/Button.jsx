@@ -15,6 +15,6 @@ export default function Button({children,className,primary,secondary,outline,sur
 
     return <button type={type} disabled={false || disabled} className={classname} {...rest}>
         {children}
-       
+        
     </button>
 }

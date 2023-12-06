@@ -28,7 +28,7 @@ function Pannel() {
     return (
       
       // slideInterval={2000}
-        <Carousel  pauseOnHover slideInterval={5000}  className="sm:w-1/2 w-3/4 mx-auto h-64  sm:h-72">
+        <Carousel   slideInterval={5000}  className="sm:w-1/3 w-3/4 mx-auto h-64  sm:h-72">
           <img
             alt="..."
             src={img3}
