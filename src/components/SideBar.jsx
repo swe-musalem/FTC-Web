@@ -4,7 +4,7 @@ import { Divider } from "@tremor/react";
 import { HiMiniBars3BottomRight } from "react-icons/hi2";
 import SideLinkHead from "./SideLinkHead";
 import { PiHouseLight } from "react-icons/pi";
-import SideLink from "./SideLink";
+// import SideLink from "./SideLink";
 
 function SideBar() {
     return <div className="flex font-Cairo" dir="rtl">
