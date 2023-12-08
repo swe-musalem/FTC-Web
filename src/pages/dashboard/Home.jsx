@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import {
     Table,
     TableHead,
@@ -15,74 +15,45 @@ import {
   } from "@tremor/react";
 
 import { Link } from "react-router-dom";
+import axios from "axios";
+import Cookies from "js-cookie";
 
 function Home() {
 
 
+  const [data, setdata] = useState([]);
+  const [isLoading, setisLoading] = useState(true);
+
+  const status = {
+    pending : 'bg-ftc-lightyellow text-ftc-yellow',
+    rejected : 'bg-red-400',
+    accepted : 'bg-green-400'
+  }
+
     useEffect(() => {
-        
+        const token = Cookies.get('token')
+        axios.get('http://localhost:9000/applicants',{
+          headers:{
+            Authorization: `Bearer ${token}`
+          }
+        }).then(res => {
+          setdata(res.data)
+          console.log(res.data)
+          setisLoading(false)
+        }).catch(err => {
+          console.log(err)
+        }).finally(
+         
+        )
+
         return () => {
             
         };
     }, []);
 
-    const data = [
-        {
-          name: "Viola Amherd",
-          Role: "Federal Councillor",
-          departement: "The Federal Department of Defence, Civil Protection and Sport (DDPS)",
-          status: "active",
-        },
-        {
-          name: "Simonetta Sommaruga",
-          Role: "Federal Councillor",
-          departement:
-            "The Federal Department of the Environment, Transport, Energy and Communications (DETEC)",
-          status: "active",
-        },
-        {
-          name: "Alain Berset",
-          Role: "Federal Councillor",
-          departement: "The Federal Department of Home Affairs (FDHA)",
-          status: "active",
-        },
-        {
-          name: "Ignazio Cassis",
-          Role: "Federal Councillor",
-          departement: "The Federal Department of Foreign Affairs (FDFA)",
-          status: "active",
-        },
-        {
-          name: "Karin Keller-Sutter",
-          Role: "Federal Councillor",
-          departement: "The Federal Department of Finance (FDF)",
-          status: "active",
-        },
-        {
-          name: "Guy Parmelin",
-          Role: "Federal Councillor",
-          departement: "The Federal Department of Economic Affairs, Education and Research (EAER)",
-          status: "active",
-        },
-        {
-          name: "Elisabdesdth Baume-Schneider",
-          Role: "Federal Councillor",
-          departement: "The Federal Department of Justice and Police (FDJP)",
-          status: "active",
-        },
-        {
-          name: "Elisabethdsa Baume-Schneider",
-          Role: "Federal Councillor",
-          departement: "The Federal Department of Justice and Police (FDJP)",
-          status: "active",
-        },
-        {
-          name: "Elisabethds Baume-Schneider",
-          Role: "Federal Councillor",
-          departement: "The Federal Department of Justice and Police (FDJP)",
-          status: "active",
-        },
-      ];
+
+
+
 
 
       const cities = [
@@ -114,31 +85,32 @@ function Home() {
 
 
 
-    return <div className="bg-ftc-gray w-full p-24 overflow-y-auto" >
+    return <div className="bg-ftc-gray w-full p-20 overflow-y-auto" >
         <div className="text-3xl mb-4">المتقدمين</div>
-        <div className="flex justify-around items-start h-full">
-                <Card className="sm:w-3/5 h-3/4 overflow-y-auto">
+        <div className={`flex flex-col lg:flex-row gap-x-4  items-start h-screen ${isLoading && 'animate-pulse'}`}>
+                <Card className="md:w-full h-3/4 overflow-y-auto">
                     <Table >
                     <TableHead>
                         <TableRow>
-                        <TableHeaderCell>Name</TableHeaderCell>
-                        <TableHeaderCell>Position</TableHeaderCell>
-                        
-                        <TableHeaderCell>Status</TableHeaderCell>
+                        <TableHeaderCell>الاسم</TableHeaderCell>
+                        <TableHeaderCell>الملف التعريفي</TableHeaderCell>
+                        <TableHeaderCell>الحالة</TableHeaderCell>
+                        <TableHeaderCell>الرقم الجامعي</TableHeaderCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {data.map((item) => (
-                        <TableRow key={item.name}>
+                        <TableRow key={item.id}>
                             <TableCell>{item.name}</TableCell>
                             <TableCell>
-                            <Text>{item.Role}</Text>
+                            <Text><Link>التفاصيل</Link></Text>
                             </TableCell>
                             <TableCell>
-                            <Badge color="emerald" >
+                            <Badge className={status[item.status]}>
                                 {item.status}
                             </Badge>
                             </TableCell>
+                            <TableCell>{item.college_id}</TableCell>
                         </TableRow>
                         ))}
                     </TableBody>

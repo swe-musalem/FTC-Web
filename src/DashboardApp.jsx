@@ -14,11 +14,11 @@ function DashboardApp(){
     <Routes>
             
         <Route path="/dashboard" element={<SideBar/>}>
-            <Route  element={<ProtectedRoute/>} >
+            <Route  element={<ProtectedRoute />} >
                 <Route index element={<Home/>} />
             </Route>
-            <Route  path="login" element={<Login/>}></Route>
         </Route>
+        <Route  path="login" element={<Login/>}></Route>
     </Routes>
     </div>
 }

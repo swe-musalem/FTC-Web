@@ -9,6 +9,7 @@ import { useState } from "react";
 import { Alert } from "flowbite-react";
 import { useNavigate  } from "react-router-dom";
 
+import Cookies from 'js-cookie';
 
 function Login() {
 
@@ -43,7 +44,7 @@ function Login() {
             setIsLoading(false)
             setIsLoggedin(true)
             // setToken(response.data.access_token)
-            localStorage.setItem('token',response.data.access_token)
+            Cookies.set('token', response.data.access_token, { expires: 7 });
             setServerErrors('')
             navigate('/dashboard')
         }).catch(err=>{

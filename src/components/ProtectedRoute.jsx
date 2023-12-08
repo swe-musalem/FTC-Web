@@ -1,7 +1,7 @@
 import { useEffect,useState } from "react";
 import { Route,useNavigate,Outlet  } from 'react-router-dom';
 import axios from "axios";
-
+import Cookies from 'js-cookie';
 
 function validateToken(token){
     
@@ -24,17 +24,16 @@ function  ProtectedRoute({Component,...rest}) {
     const Navigate = useNavigate()
 
     useEffect(() => {
-        const token = localStorage.getItem('token')
+        const token = Cookies.get('token')
         
         validateToken(token).then(res=>{
             if(res.data.is_valid){
                 setIsAuthenticated(true)
             }else{
-                Navigate('login')
+                Navigate('/login')
             }
             console.log(res)
         }).catch(err=>{
-            console.log(token)
             console.log(err)
         })
         
@@ -43,7 +42,7 @@ function  ProtectedRoute({Component,...rest}) {
         };
     }, []);
     return (
-          isAuthenticated ? <Outlet/> : Navigate("login")
+          isAuthenticated ? <Outlet/> : Navigate("/login")
     
     )
 }

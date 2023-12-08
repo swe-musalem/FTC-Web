@@ -32,7 +32,13 @@ export default {
           onSurface: "#191C1D",
           surface: "#FBFDFD",
           gray:"#F2F6FA",
-          coal:"#191C1D"
+          coal:"#191C1D",
+          green: '#12CA9E',
+          lightgreen:'#DEFFF9',
+          yellow:'#F3B410',
+          lightyellow: '#FFF6DE',
+          red:'#ED1B1B',
+          lightred:'#FFDEDE'
         },
         'btncolor': {
           'primary': '#6535BB',
