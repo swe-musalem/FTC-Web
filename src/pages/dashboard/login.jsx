@@ -1,6 +1,6 @@
 
 import axios from "axios"
-import logo from '../../assets/LogoNavbar.svg'
+import logo from '../../assets/logoLogin.svg'
 import { TextInput } from "@tremor/react";
 import { FaRegUser } from "react-icons/fa";
 import { RiLockPasswordLine } from "react-icons/ri";
@@ -57,7 +57,7 @@ function Login() {
     return <div className="h-scree flex justify-center font-Cairo">
             {/* left side */}
             <div className="h-screen sm:w-4/6 flex justify-center bg-ftc-primary">
-                <img src={logo} className="w-1/2" alt="" srcset="" />
+                <img src={logo} className="w-1/2" alt="Logo"  />
             </div>
 
             <div className="h-screen w-full bg-white flex  justify-center items-center" dir="rtl">
