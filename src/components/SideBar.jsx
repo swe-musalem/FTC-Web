@@ -3,7 +3,7 @@ import img from "../assets/LogoBar.png"
 import { Divider } from "@tremor/react";
 import { HiMiniBars3BottomRight } from "react-icons/hi2";
 import SideLinkHead from "./SideLinkHead";
-import SideLink from "./SideLink";
+import SideLink from "./sideLink";
 
 import { PiHouseLight } from "react-icons/pi";
 import { MdNewspaper } from "react-icons/md";
