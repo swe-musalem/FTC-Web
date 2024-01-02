@@ -6,7 +6,7 @@ import Cookies from 'js-cookie';
 function validateToken(token){
     
     // go to fast api
-    return axios.post("http://127.0.0.1:9000/validate_token/",null,{
+    return axios.post("https://ftc-fast-api.onrender.com/validate_token/",null,{
         headers:{
             Authorization: `Bearer ${token}`
         }
@@ -15,11 +15,14 @@ function validateToken(token){
 
 
 
+
 function  ProtectedRoute({Component,...rest}) {
 
-    console.log('protected')
+   
 
-    const [isAuthenticated, setIsAuthenticated] = useState(true);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+    const [isLoading, setIsLoading] = useState(true);
 
     const Navigate = useNavigate()
 
@@ -29,10 +32,10 @@ function  ProtectedRoute({Component,...rest}) {
         validateToken(token).then(res=>{
             if(res.data.is_valid){
                 setIsAuthenticated(true)
+                setIsLoading(false)
             }else{
                 Navigate('/login')
             }
-            console.log(res)
         }).catch(err=>{
             console.log(err)
         })
@@ -42,7 +45,7 @@ function  ProtectedRoute({Component,...rest}) {
         };
     }, []);
     return (
-          isAuthenticated ? <Outlet/> : Navigate("/login")
+          isAuthenticated ? (!isLoading ? <Outlet/> : null) : Navigate("/login")
     
     )
 }

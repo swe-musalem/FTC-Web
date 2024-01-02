@@ -1,6 +1,6 @@
 
 import axios from "axios"
-import logo from '../../assets/logoLogin.svg'
+import logo from '../../assets/LogoNavbar.svg'
 import { TextInput } from "@tremor/react";
 import { FaRegUser } from "react-icons/fa";
 import { RiLockPasswordLine } from "react-icons/ri";
@@ -36,7 +36,7 @@ function Login() {
 
     const handleSubmit = ()=>{
         setIsLoading(true)
-        axios.post ('http://localhost:9000/login',{
+        axios.post ('https://ftc-fast-api.onrender.com/login',{
             "user":username,
             "password":password
         }).then(response=>{
@@ -54,7 +54,7 @@ function Login() {
     }
 
 
-    return <div className="h-scree flex justify-center">
+    return <div className="h-scree flex justify-center font-Cairo">
             {/* left side */}
             <div className="h-screen sm:w-4/6 flex justify-center bg-ftc-primary">
                 <img src={logo} className="w-1/2" alt="" srcset="" />

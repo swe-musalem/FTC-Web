@@ -48,8 +48,8 @@ function Apply() {
     const [isSubmittingToServer, setIsSubmittingToServer] = useState(false);
 
     const [isSubmitToServerSuceess, setIsSubmitToServerSuceess] = useState(false);
-
-    const isApplyingOpen = false;
+    
+    const isApplyingOpen = true;
 
     const allErrors = Object.values(errors).map(key=>{return <div key={key.message}> * {key.message}</div>})
     // const allServerErrors = serverErrors.map(value=>{return <div key={value} >{value}</div> })
@@ -66,13 +66,12 @@ function Apply() {
         data = {
             ...data,
             major:major,
-            
         }
 
         setIsSubmittingToServer(true)
-        axios.post('http://127.0.0.1:9000/applicant',data)
+        axios.post('https://ftc-fast-api.onrender.com/applicant',data)
         .then((res)=>{
-            if (isSubmitSuccessful) {
+            if (isSubmitSuccessful || res.status === 200) {
                 reset()
                 setServerErrors([])
                 setIsSubmittingToServer(false)

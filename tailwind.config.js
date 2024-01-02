@@ -33,6 +33,7 @@ export default {
           surface: "#FBFDFD",
           gray:"#F2F6FA",
           coal:"#191C1D",
+          smoke:"#56606D",
           green: '#12CA9E',
           lightgreen:'#DEFFF9',
           yellow:'#F3B410',

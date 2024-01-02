@@ -27,3 +27,40 @@ textarea {
     background-color: transparent;
     resize: none; /*remove the resize handle on the bottom right*/
 }
+
+/* Always show the scrollbar */
+html {
+    scrollbar-color: #c1c1c1 #f5f5f5;
+    scrollbar-width: thin;
+  }
+  
+  /* Custom scrollbar for Webkit browsers */
+  /* Scrollbar background */
+  ::-webkit-scrollbar {
+    width: 12px;
+    background-color: #f5f5f5; /* Light grey background */
+  }
+  
+  /* Scrollbar handle */
+  ::-webkit-scrollbar-thumb {
+    background-color: #c1c1c1; /* Darker grey scroll thumb */
+    border-radius: 6px;
+    border: 3px solid #f5f5f5; /* Same as the scrollbar background */
+  }
+  
+  /* Scrollbar handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #a8a8a8; /* Slightly darker shade for hover effect */
+  }
+  
+  /* Scrollbar track corner and resizer (optional, for completeness) */
+  ::-webkit-scrollbar-corner,
+  ::-webkit-resizer {
+    background-color: #f5f5f5;
+  }
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
