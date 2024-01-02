@@ -3,7 +3,7 @@ import img from "../assets/LogoBar.png"
 import { Divider } from "@tremor/react";
 import { HiMiniBars3BottomRight } from "react-icons/hi2";
 import SideLinkHead from "./SideLinkHead";
-import SideLink from "./sideLink";
+import SideLinkChild from "./SideLinkChild";
 
 import { PiHouseLight } from "react-icons/pi";
 import { MdNewspaper } from "react-icons/md";
@@ -28,11 +28,11 @@ function SideBar() {
                     اقوى داشبورد
                 </Divider>
                 <SideLinkHead title="التقديم"  SideIcon={<MdNewspaper/>} >
-                    <SideLink title="الموجز" to={"/dashboard"}/>
-                    <SideLink title="المتقدمين"  to={"applicants"}/>
+                    <SideLinkChild title="الموجز" to={"/dashboard"}/>
+                    <SideLinkChild title="المتقدمين"  to={"applicants"}/>
                 </SideLinkHead>
                 <SideLinkHead title="المستخدمين"  SideIcon={<RiUserSettingsFill/>} >
-                    <SideLink title="السجل" to={"logs"} />
+                    <SideLinkChild title="السجل" to={"logs"} />
                 </SideLinkHead>
                 
         </div>

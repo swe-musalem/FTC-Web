@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useRef } from 'react';
 
-function SideLink({SideIcon,title,children,...rest}) {
+function SideLinkChild({SideIcon,title,children,...rest}) {
 
     const boxStyle = `flex justify-between  w-3/5  rounded-md my-2 items-center hover:text-ftcpallete-70`
 
@@ -17,4 +17,4 @@ function SideLink({SideIcon,title,children,...rest}) {
     </NavLink>
 }
 
-export default SideLink
+export default SideLinkChild
