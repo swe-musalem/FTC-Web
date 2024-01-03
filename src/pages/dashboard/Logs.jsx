@@ -30,10 +30,10 @@ function Logs() {
 
   
 
-  return <div className="h-screen bg-ftc-gray flex flex-col gap-y-2 p-20 px-10 w-full" >
+  return <div className="h-screen bg-ftc-gray flex flex-col gap-y-2 p-20 px-10 w-full overflow-hidden" >
     <div className="text-3xl">السجل</div>
-    <Card>
-      <div className="text-gray-400 flex flex-col-reverse divide-y gap-y-2">
+    <Card className="overflow-y-scroll">
+      <div className="text-gray-400 flex flex-col-reverse divide-y gap-y-2 ">
       {data.map((log)=>{
         return <div className="flex justify-between w-full flex-row-reverse " key={log.id}>
           <div>{log.data}</div>

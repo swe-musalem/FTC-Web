@@ -16,6 +16,7 @@ function validateToken(token){
 
 
 
+
 function  ProtectedRoute({Component,...rest}) {
 
    
@@ -39,10 +40,6 @@ function  ProtectedRoute({Component,...rest}) {
         }).catch(err=>{
             console.log(err)
         })
-        
-        return () => {
-            
-        };
     }, []);
     return (
           isAuthenticated ? (!isLoading ? <Outlet/> : null) : Navigate("/login")

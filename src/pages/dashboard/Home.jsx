@@ -9,20 +9,17 @@ import {
     Card,
     Title,
     Badge,
-    Text,
-    DonutChart,
-    Legend,
   } from "@tremor/react";
 
 import { FaRegClock } from "react-icons/fa6";
 import { RxCross1 } from "react-icons/rx";
 import { IoMdCheckmark } from "react-icons/io";
 
-
+import DonutChartComponent from "../../components/DonutChartComponent";
 
 import { Link } from "react-router-dom";
 
-import PopUp from "../../components/PopUp";
+
 import useApplicantsData from "../../utils/useApplicantsData";
 
 function Home() {
@@ -35,40 +32,11 @@ function Home() {
     accepted : 'bg-ftc-lightgreen text-ftc-green'
   }
 
-    // useEffect(() => {
-      const cities = [
-        {
-          name: "New York",
-          sales: 9800,
-        },
-        {
-          name: "London",
-          sales: 4567,
-        },
-        {
-          name: "Hong Kong",
-          sales: 3908,
-        },
-        {
-          name: "San Francisco",
-          sales: 2400,
-        },
-        {
-          name: "Singapore",
-          sales: 1908,
-        },
-        {
-          name: "Zurich",
-          sales: 1398,
-        },
-      ];
-
-
 
     return <div className="bg-ftc-gray w-full p-20 overflow-y-auto" >
         <div className="text-3xl mb-4">المتقدمين</div>
-        <div className={`flex flex-col lg:flex-row gap-x-4  items-start h-screen ${isLoading && 'animate-pulse'}`}>
-                <Card className="md:w-full h-3/4 overflow-y-auto">
+        <div className={`flex flex-col lg:flex-row gap-x-4  items-start h-1/2 ${isLoading && 'animate-pulse h-screen'}`}>
+                <Card className="md:w-full h-3/4 my-4 overflow-y-auto">
                     <Table >
                     <TableHead>
                         <TableRow>
@@ -98,8 +66,8 @@ function Home() {
                         </Link>
                     </Title>
                 </Card>
-                <div className="sm:w-1/5 p-0 rounded-t-3xl  bg-white text-ftc-smoke">
-                    <div className="bg-ftc-primary p-4 w-full text-center text-white text-3xl rounded-3xl">المتقدمين</div>
+                <div className="w-72 p-0 rounded-t-3xl  bg-white text-ftc-smoke">
+                    <div className="bg-ftc-primary p-4 w-full text-center text-white text-2xl rounded-3xl">المتقدمين</div>
                     <div className="px-4 py-4 flex flex-col gap-y-2 h-48 divide-y ">
                       <div className="flex justify-between items-center">
                         <div className="flex items-center gap-x-2 py-2">
@@ -125,7 +93,10 @@ function Home() {
                     </div>
                 </div>
         </div>
-        <div className="text-3xl mt-4 mb-4 text-ftc-coal">الاحصائيات</div>
+        <div>
+          <div className="text-3xl mt-4 mb-4 text-ftc-coal">الاحصائيات</div>
+          <DonutChartComponent />
+        </div>
        
        
     </div>

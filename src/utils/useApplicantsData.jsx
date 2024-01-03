@@ -9,8 +9,10 @@ export default function useApplicantsData(params) {
   const [filterdData, setFilterdData] = useState([]);
   const [isLoading, setisLoading] = useState(true);
   const [countData, setCountData] = useState({});
+  const [majorCount, setMajorCount] = useState({});
   const [iDStatusChanging, setIdStatusChanging] = useState(false);
   const [isStatusChanging, setIsStatusChanging] = useState(false);
+  const [statusFilter, setStatusFilter] = useState('all');
 
   const token = Cookies.get('token')
   
@@ -26,11 +28,12 @@ export default function useApplicantsData(params) {
     setIsStatusChanging(false)
     
     const newData = data.map(applicant =>{
-      if (applicant.id === id) {
-        return  {...applicant,status:'accepted'}
-      }return applicant
-    })
-    setdata(newData)
+      
+        if (applicant.id === id ) {
+          return  {...applicant,status:'accepted'}
+        }return applicant
+      })
+      setdata(newData)
   }
 
   const handleReject = async (id) =>{
@@ -58,16 +61,10 @@ export default function useApplicantsData(params) {
         return applicantId.college_id.includes(id)
       })
     setFilterdData(newData)
+    setdata(filterdData)
   }
 
-  const handleStatusFilter = (status)=>{
-    const newData = data.filter((applicant)=>{
-      if (status !== 'all'){
-          return applicant.status === status
-        }return true
-    })
-    setFilterdData(newData)
-  }
+  
     useEffect(() => {
         
         axios.get('https://ftc-fast-api.onrender.com/applicants',{
@@ -78,6 +75,7 @@ export default function useApplicantsData(params) {
           setdata(res.data.applicants)
           setFilterdData(res.data.applicants)
           setCountData(res.data.count)
+          setMajorCount(res.data.majors)
           setisLoading(false)
         }).catch(err => {
           console.log(err)
@@ -102,8 +100,11 @@ export default function useApplicantsData(params) {
       handleAccept,
       handleReject,
       handleSearchById,
-      handleStatusFilter,
+      // handleStatusFilter,
+      statusFilter,
+      setStatusFilter,
       isStatusChanging,
       iDStatusChanging,
+      majorCount,
     }
 }

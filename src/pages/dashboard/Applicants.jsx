@@ -13,23 +13,18 @@ import {
     Badge,
     Text,
     DonutChart,
-    Legend,
-    Select, 
-    SelectItem,
   } from "@tremor/react";
 
   import { Modal, Textarea } from 'flowbite-react';
 
 
 import Button from "../../components/Button";
-import { CiSearch } from "react-icons/ci";
-import { FaRegClock } from "react-icons/fa6";
 import { RxCross2 } from "react-icons/rx";
 import { IoMdCheckmark } from "react-icons/io";
 import { MdOutlineSettings } from "react-icons/md";
 import MoonLoader from "react-spinners/ClipLoader";
 
-import { Link } from "react-router-dom";
+
 
 import PopUp from "../../components/PopUp";
 import useApplicantsData from "../../utils/useApplicantsData";
@@ -47,6 +42,8 @@ function Applicants() {
     handleReject,
     isStatusChanging,
     handleStatusFilter,
+    statusFilter,
+    setStatusFilter,
     handleSearchById} = useApplicantsData()
     
   const status = {
@@ -65,16 +62,16 @@ function Applicants() {
   
   const [show, setShow] = useState(false);
   const [text, setText] = useLocalStorageState('whatsupMsg')
-//   const [filterdData, setfilterdData] = useState(data);
-  const [statusFilter, setStatusFilter] = useState('all');
-  console.log(statusFilter)
+  const [searchId, setSearchId] = useState('');
+
  const handleSearchChange = (e)=>{
-    handleSearchById(e.target.value)
+    // handleSearchById(e.target.value)
+    setSearchId(e.target.value)
  }
 
  const handleStatusFilterChange = (e) => {
     setStatusFilter(e.target.value);
-    handleStatusFilter(e.target.value)
+    
 };
  
 
@@ -98,13 +95,14 @@ function Applicants() {
         <div className={`flex flex-col lg:flex-row gap-x-4 items-start h-screen ${isLoading && 'animate-pulse'}`}>
                 <Card className="md:w-full h-3/4 overflow-y-auto">
                     <div className=" flex gap-x-2">
-                        <input placeholder={` 🔍 البحث بالرقم الجامعي`  } type="number" onChange={handleSearchChange} className="rounded-md border focus:ring-1 border-slate-300 focus:outline-none placeholder:italic placeholder:text-slate-400" />
+                        <input placeholder={` 🔍 البحث بالرقم الجامعي`  } value={searchId} type="number" onChange={handleSearchChange} className="rounded-md border focus:ring-1 border-slate-300 focus:outline-none placeholder:italic placeholder:text-slate-400" />
 
-                        <select id="select" value={statusFilter} onChange={handleStatusFilterChange} className="rounded-md border focus:ring-1 border-slate-300 focus:outline-none">
-                            <option value="all">الحالة</option>
-                            <option value="rejected">Rejected</option>
-                            <option value="accepted">Accepted</option>
-                            <option value="pending">Pending</option>
+                        <select id="select" value={statusFilter} onChange={handleStatusFilterChange} className="rounded-md hover:bg-ftc-gray border focus:ring-1 border-slate-300 focus:outline-none">
+                            <option hidden>الحالة</option>
+                            <option value="all" className="hover:bg-ftc-primary">All</option>
+                            <option value="rejected">rejected</option>
+                            <option value="accepted">accepted</option>
+                            <option value="pending">pending</option>
                         </select>
                     </div>
                     <Table >
@@ -119,41 +117,41 @@ function Applicants() {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {filterdData.map((item) => (
-
-                        <TableRow key={item.id} className="odd:bg-ftc-gray">
-                            <TableCell>{item.name}</TableCell>
-                            <TableCell>{item.college_id}</TableCell>
-                            <TableCell>
+                    {data
+                    .filter(item => item.status === statusFilter || statusFilter === "all")
+                    .filter(item => item.college_id.startsWith(searchId))
+                    .map((item) => (
+                        <TableRow key={item.id} className="odd:bg-ftc-gray transition duration-300 ease-in-out hover:scale-[99%]">
+                        <TableCell>{item.name}</TableCell>
+                        <TableCell>{item.college_id}</TableCell>
+                        <TableCell>
                             <Badge className={major[item.major]+ ' w-20 h-5 rounded-[5px]'}>
-                                {item.major}
+                            {item.major}
                             </Badge>
-                            </TableCell>
-                            <TableCell>
+                        </TableCell>
+                        <TableCell>
                             <Text>
-                              <PopUp  details={item} />
+                            <PopUp details={item} />
                             </Text>
-                            </TableCell>
-                            <TableCell>
-                                <Badge className={`${status[item.status]} w-20`}>
-                                    {iDStatusChanging === item.id ? <MoonLoader color="white" size={20}/> : item.status }
-                                </Badge>
-                            </TableCell>
-                            <TableCell>
-                                <div className="flex flex-row-reverse items-center gap-x-4 ">
-                                    <Button disabled={isStatusChanging || item.status === 'rejected'} className="bg-[#FFDEDE] p-2 rounded-lg  drop-shadow-none" onClick={()=>handleReject(item.id)}>
-                                        <RxCross2 className="text-[#F14C4C] text-xl"/>
-                                    </Button>
-                                    <Button  disabled={isStatusChanging || item.status === 'accepted' } className="bg-[#DEFFF9] p-2 rounded-lg  drop-shadow-none" onClick={()=>handleAccept(item.id)}>
-                                        
-                                        <IoMdCheckmark className="text-[#12CA9E] text-xl"/>
-                                    </Button>
-                                </div>
-                            </TableCell>
-                            
-                            
+                        </TableCell>
+                        <TableCell>
+                            <Badge className={`${status[item.status]} w-20`}>
+                            {iDStatusChanging === item.id ? <MoonLoader color="white" size={20}/> : item.status }
+                            </Badge>
+                        </TableCell>
+                        <TableCell>
+                            <div className="flex flex-row-reverse items-center gap-x-4 ">
+                            <Button disabled={isStatusChanging || item.status === 'rejected'} className="bg-[#FFDEDE] p-2 rounded-lg  drop-shadow-none" onClick={()=>handleReject(item.id)}>
+                                <RxCross2 className="text-[#F14C4C] text-xl"/>
+                            </Button>
+                            <Button disabled={isStatusChanging || item.status === 'accepted'} className="bg-[#DEFFF9] p-2 rounded-lg  drop-shadow-none" onClick={()=>handleAccept(item.id)}>
+                                <IoMdCheckmark className="text-[#12CA9E] text-xl"/>
+                            </Button>
+                            </div>
+                        </TableCell>
                         </TableRow>
-                        ))}
+                    ))
+                    }
                     </TableBody>
                     </Table>
                    

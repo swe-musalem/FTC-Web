@@ -36,7 +36,7 @@ function SideBar() {
                 </SideLinkHead>
                 
         </div>
-        <Outlet/>
+        {<Outlet/>}
     </div>
 }
 
