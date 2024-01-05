@@ -9,12 +9,16 @@ import { PiHouseLight } from "react-icons/pi";
 import { MdNewspaper } from "react-icons/md";
 import { FaFilter } from "react-icons/fa";
 import { RiUserSettingsFill } from "react-icons/ri";
+import { useEffect, useRef } from "react";
 
 
 
 
 function SideBar() {
-    return <div className="flex font-Cairo min-h-screen" dir="rtl" >
+
+   
+
+    return <div className="flex font-Cairo min-h-screen"  dir="rtl" >
         {/* sideBar starts here */}
         <div className=" sm:w-56"  style={{
           background:

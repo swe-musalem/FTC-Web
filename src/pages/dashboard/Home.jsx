@@ -32,11 +32,16 @@ function Home() {
     accepted : 'bg-ftc-lightgreen text-ftc-green'
   }
 
+  const statusToArabic = {
+    accepted:'مقبول',
+    rejected:'مرفوض',
+    pending:'بالانتظار',
+  }
 
-    return <div className="bg-ftc-gray w-full p-20 overflow-y-auto" >
+    return <div className="bg-ftc-gray w-full px-20 py-10  overflow-y-auto" >
         <div className="text-3xl mb-4">المتقدمين</div>
         <div className={`flex flex-col lg:flex-row gap-x-4  items-start h-1/2 ${isLoading && 'animate-pulse h-screen'}`}>
-                <Card className="md:w-full h-3/4 my-4 overflow-y-auto">
+                <Card className="md:w-full h-[30rem] my-4 overflow-y-auto">
                     <Table >
                     <TableHead>
                         <TableRow>
@@ -52,7 +57,7 @@ function Home() {
                             
                             <TableCell>
                             <Badge className={status[item.status]}>
-                                {item.status}
+                                {statusToArabic[item.status]}
                             </Badge>
                             </TableCell>
                             <TableCell>{item.college_id}</TableCell>
@@ -94,7 +99,7 @@ function Home() {
                 </div>
         </div>
         <div>
-          <div className="text-3xl mt-4 mb-4 text-ftc-coal">الاحصائيات</div>
+          <div className="text-3xl mt-8 mb-4 text-ftc-coal">الاحصائيات</div>
           <DonutChartComponent />
         </div>
        

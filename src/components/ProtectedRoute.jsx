@@ -42,7 +42,8 @@ function  ProtectedRoute({Component,...rest}) {
         })
     }, []);
     return (
-          isAuthenticated ? (!isLoading ? <Outlet/> : null) : Navigate("/login")
+        // Needs review
+          isAuthenticated ? (!isLoading ? <Outlet/> : Navigate("/login")) : Navigate("/login")
     
     )
 }
