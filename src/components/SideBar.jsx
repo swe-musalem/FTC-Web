@@ -20,7 +20,7 @@ function SideBar() {
 
     return <div className="flex font-Cairo min-h-screen"  dir="rtl" >
         {/* sideBar starts here */}
-        <div className=" sm:w-56"  style={{
+        <div className=" sm:w-56 min-w-56"  style={{
           background:
             "linear-gradient(100.2deg, #6535BB -8.36%, #2A9EEA 187.38%),linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08))",
         }}>
@@ -40,7 +40,9 @@ function SideBar() {
                 </SideLinkHead>
                 
         </div>
-        {<Outlet/>}
+        <div className="w-full">
+            <Outlet/>
+        </div>
     </div>
 }
 
