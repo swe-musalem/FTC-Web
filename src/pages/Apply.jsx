@@ -77,14 +77,12 @@ function Apply() {
                 setIsSubmittingToServer(false)
                 setIsSubmitToServerSuceess(true)
                 setMajor('التخصص')
-                console.log(res)
             }
         })
         .catch(error=>{
             // const arrayofErrors = Object.values(error.response.data).flat(1)
             setServerErrors(error.response.data.detail)
             setIsSubmittingToServer(false)
-            console.log(error)
         })
     
       

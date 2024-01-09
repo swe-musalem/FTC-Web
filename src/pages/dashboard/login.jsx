@@ -40,10 +40,8 @@ function Login() {
             "user":username,
             "password":password
         }).then(response=>{
-            console.log(response)
             setIsLoading(false)
             setIsLoggedin(true)
-            // setToken(response.data.access_token)
             Cookies.set('token', response.data.access_token, { expires: 7 });
             setServerErrors('')
             navigate('/dashboard')

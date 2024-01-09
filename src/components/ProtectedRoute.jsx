@@ -38,7 +38,7 @@ function  ProtectedRoute({Component,...rest}) {
                 Navigate('/login')
             }
         }).catch(err=>{
-            console.log(err)
+            
         })
     }, []);
     return (
