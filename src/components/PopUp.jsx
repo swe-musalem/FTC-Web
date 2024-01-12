@@ -57,7 +57,7 @@ function PopUp({details}) {
           </div>
           <div className='flex flex-col  w-5/12 items-center'>
             <div className='whitespace-nowrap'>هل لديك ملاحظات  ؟ </div>
-            <div className={textBoxStyle}>{experience_in_design}</div>
+            <div className={textBoxStyle}>{notes}</div>
           </div>
          
         </Modal.Body>
