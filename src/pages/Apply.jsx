@@ -49,7 +49,7 @@ function Apply() {
 
     const [isSubmitToServerSuceess, setIsSubmitToServerSuceess] = useState(false);
     
-    const isApplyingOpen = true;
+    const isApplyingOpen = false;
 
     const allErrors = Object.values(errors).map(key=>{return <div key={key.message}> * {key.message}</div>})
     // const allServerErrors = serverErrors.map(value=>{return <div key={value} >{value}</div> })
