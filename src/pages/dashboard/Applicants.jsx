@@ -69,7 +69,7 @@ function Applicants() {
   const [searchName, setSearchName] = useState('');
 
  const handleSearchChangeCollageId = (e)=>{
-    setSearchId(e.target.value)
+    setSearchId(String(e.target.value))
  }
  const handleSearchChangeName = (e)=>{
     setSearchName(e.target.value)
@@ -129,7 +129,7 @@ function Applicants() {
                     <TableBody>
                     {data
                     .filter(item => item.status === statusFilter || statusFilter === "all")
-                    .filter(item => item.college_id.startsWith(searchId))
+                    .filter(item => searchId ? String(item.college_id).startsWith(searchId) : true)
                     .filter(item => item.name.includes(searchName))
                     .map((item) => (
                         <TableRow key={item.id} className="odd:bg-ftc-gray transition duration-300 ease-in-out hover:scale-[99%]">
