@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import useLocalStorageState from 'use-local-storage-state';
-
+import ApplicationSwitch from "../../components/ApplicationSwitch";
 import {
     Table,
     TableHead,
@@ -95,9 +95,12 @@ function Applicants() {
                 حفظ
             </Button>
         </Modal>
-        <div className="text-3xl mb-4 flex items-center gap-x-2">
-            <div>المتقدمين</div>
-            <MdOutlineSettings onClick={()=>{setShow(true)}}/>
+        <div>
+            <div className="text-3xl mb-4 flex items-center gap-x-2">
+                <div>المتقدمين</div>
+                <MdOutlineSettings onClick={()=>{setShow(true)}}/>
+            </div>
+            <ApplicationSwitch/>
         </div>
         <div className={`flex flex-col lg:flex-row gap-x-4 items-start h-5/6 ${isLoading && 'animate-pulse'}`}>
                 <Card className="md:w-full h-full overflow-y-auto">

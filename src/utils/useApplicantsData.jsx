@@ -9,6 +9,7 @@ export default function useApplicantsData(params) {
   const [isLoading, setisLoading] = useState(true);
   const [countData, setCountData] = useState({});
   const [majorCount, setMajorCount] = useState({});
+  console.log(majorCount);
   const [iDStatusChanging, setIdStatusChanging] = useState(false);
   const [isStatusChanging, setIsStatusChanging] = useState(false);
   const [statusFilter, setStatusFilter] = useState('all');

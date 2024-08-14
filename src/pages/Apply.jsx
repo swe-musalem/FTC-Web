@@ -1,5 +1,5 @@
 import Input from '../components/Input';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import DropDown from '../components/DropDown';
 import Button from '../components/Button';
 
@@ -37,6 +37,14 @@ function Apply() {
       label: 'علوم الحاسب',
       dbvalue: 'CS',
     },
+    {
+      label: 'تقنية المعلومات',
+      dbvalue: 'IT',
+    },
+    {
+      label: 'اخرى',
+      dbvalue: 'OTH',
+    },
   ];
 
   const [serverErrors, setServerErrors] = useState('');
@@ -45,7 +53,24 @@ function Apply() {
 
   const [isSubmitToServerSuceess, setIsSubmitToServerSuceess] = useState(false);
 
-  const isApplyingOpen = false;
+
+  const [isChecked, setIsChecked] = useState(false);
+
+  useEffect(()=>{
+    const fetchStatus = async () => {
+        try {
+            const response = await axios.get('https://ftc-api.onrender.com/status');
+            setIsChecked(response.data.is_open);
+        } catch (error) {
+            console.error('Failed to fetch status', error);
+        }
+    };
+    fetchStatus()
+  },[])
+  
+
+
+  const isApplyingOpen = isChecked;
 
   const allErrors = Object.values(errors).map((key) => {
     return <div key={key.message}> * {key.message}</div>;
@@ -73,6 +98,7 @@ function Apply() {
           setIsSubmittingToServer(false);
           setIsSubmitToServerSuceess(true);
           setMajor('التخصص');
+          
         }
       })
       .catch((error) => {

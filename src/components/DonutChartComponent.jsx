@@ -21,6 +21,14 @@ export default function DonutChartComponent(){
       major: "IS",
       sales: majorCount.IS,
     },
+    {
+      major: "IT",
+      sales: majorCount.IT,
+    },
+    {
+      major: "OTH",
+      sales: majorCount.OTH,
+    },
     
   ];
   return <Card className="max-w-lg text-right">
@@ -30,7 +38,7 @@ export default function DonutChartComponent(){
             data={cities}
             category="sales"
             index="major"
-            colors={["blue", "violet", "cyan", "rose"]}
+            colors={["blue", "violet", "cyan", "rose",'emerald']}
           />
           <div className="w-full flex justify-between items-center">
             <div className="flex flex-col items-center">
@@ -60,6 +68,20 @@ export default function DonutChartComponent(){
                 <div className="w-3 h-3 rounded-full bg-[#F43F5E]"></div>
               </div>
               <div>{majorCount.IS}</div>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="flex flex-row-reverse justify-center gap-x-2 items-center">
+                <div>IT</div>
+                <div className="w-3 h-3 rounded-full bg-[#10b981]"></div>
+              </div>
+              <div>{majorCount.IT}</div>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="flex flex-row-reverse justify-center gap-x-2 items-center">
+                <div>OTH</div>
+                <div className="w-3 h-3 rounded-full bg-gray-500"></div>
+              </div>
+              <div>{majorCount.OTH}</div>
             </div>
           </div>
         </Card>
