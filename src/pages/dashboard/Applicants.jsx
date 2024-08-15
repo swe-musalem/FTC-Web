@@ -83,7 +83,6 @@ function Applicants() {
  
 
 
-
     return <div className="bg-ftc-gray w-full px-20 py-10 overflow-y-auto h-screen" >
         <Modal show={show} onClose={()=>{setShow(false)}} >
             <Modal.Header/>

@@ -26,7 +26,6 @@ function PopUp({details}) {
     volunteering,
     commite,
   } = details
-
   const textBoxStyle = "border rounded-md h-72 w-full break-words overflow-y-auto p-2"
 
   return<>
