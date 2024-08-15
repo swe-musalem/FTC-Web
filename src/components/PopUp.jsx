@@ -24,6 +24,7 @@ function PopUp({details}) {
     phone_number,
     status,
     volunteering,
+    commite,
   } = details
 
   const textBoxStyle = "border rounded-md h-72 w-full break-words overflow-y-auto p-2"
@@ -34,6 +35,7 @@ function PopUp({details}) {
         <Modal.Header className='w-full'>
           <div className='flex items-center gap-x-4'>
             <div>{name}</div>
+            <div>{commite}</div>
             {phone_number}
             <a   target="_blank" href={`https://wa.me/${phone_number}?text=${whatsupMsg}`}>{<FaWhatsapp size={30} className='text-ftc-tertiary' />}</a>
           </div>
@@ -59,7 +61,6 @@ function PopUp({details}) {
             <div className='whitespace-nowrap'>هل لديك ملاحظات  ؟ </div>
             <div className={textBoxStyle}>{notes}</div>
           </div>
-         
         </Modal.Body>
         
       </Modal>

@@ -20,6 +20,13 @@ function Apply() {
   } = useForm();
 
   const [major, setMajor] = useState('');
+
+  const [commite, setCommite] = useState('');
+
+  const [gender, setGender] = useState('');
+
+
+
   const majorOptions = [
     {
       label: 'هندسة البرمجيات',
@@ -46,6 +53,38 @@ function Apply() {
       dbvalue: 'OTH',
     },
   ];
+  const committeOptions = [
+    {
+      label: 'اللجنه الاعلامية - التصميم وكتابه المحتوى',
+      dbvalue: 'اللجنه الاعلامية - التصميم وكتابه المحتوى',
+    },
+    {
+      label: 'اللجنه الاعلامية - التصوير والمونتاج',
+      dbvalue: 'اللجنه الاعلامية - التصوير والمونتاج',
+    },
+    gender !== 'أنثى' && {
+      label: 'لجنة الموارد البشرية - المقر',
+      dbvalue: 'لجنة الموارد البشرية - المقر',
+    },
+    {
+      label: 'لجنة الموارد البشرية - الفعاليات',
+      dbvalue: 'لجنة الموارد البشرية - الفعاليات',
+    },
+    {
+      label: 'لجنة الموارد البشرية - الشؤون الداخلية',
+      dbvalue: 'لجنة الموارد البشرية - الشؤون الداخلية',
+    },
+  ];
+
+  const genderOptions = [{
+    label:'ذكر',
+    dbvalue:'ذكر'
+  },
+  {
+    label:'أنثى',
+    dbvalue:'أنثى'
+  }
+]
 
   const [serverErrors, setServerErrors] = useState('');
 
@@ -85,11 +124,15 @@ function Apply() {
     data = {
       ...data,
       major: major,
+      gender:gender,
+      commite:commite,
     };
+    console.log(data);
     // https://ftc-api.onrender.com
 
     setIsSubmittingToServer(true);
     axios
+    // https://ftc-api.onrender.com/applicant
       .post('https://ftc-api.onrender.com/applicant', data)
       .then((res) => {
         if (isSubmitSuccessful || res.status === 200) {
@@ -98,7 +141,8 @@ function Apply() {
           setIsSubmittingToServer(false);
           setIsSubmitToServerSuceess(true);
           setMajor('التخصص');
-          
+          setCommite('اللجنة')
+          setGender('الجنس')
         }
       })
       .catch((error) => {
@@ -126,12 +170,6 @@ function Apply() {
             {/* this boolean expression checks the whole error object */}
             {Object.keys(errors).length > 0 && (
               <Alert color="failure">{allErrors}</Alert>
-            )}
-
-            {serverErrors.length > 0 && (
-              <Alert color="failure" className="mt-2">
-                {serverErrors}
-              </Alert>
             )}
 
             {isSubmitToServerSuceess && (
@@ -188,16 +226,34 @@ function Apply() {
               }),
             }}
           />
-          <div className="col-span-2 w-full">
+          <div className="col-span-1 w-full">
             {/* <DropDown value={major} placeholder={'التخصص'} className=' w-full md:w-1/2' options={majorOptions} setValue={setMajor} */}
             <DropDown
               options={majorOptions}
               placeholder={'التخصص'}
-              className=" w-full md:w-1/2"
+              className=" w-full"
               value={major}
               setValue={setMajor}
             />
           </div>
+          <div className="col-span-1 w-full my-2 sm:my-0">
+            <DropDown
+              options={committeOptions}
+              placeholder={'اللجنة'}
+              className=" w-full"
+              value={commite}
+              setValue={setCommite}
+            />
+            <DropDown
+              options={genderOptions}
+              placeholder={'الجنس'}
+              className="w-full my-2"
+              value={gender}
+              setValue={setGender}
+            />
+          </div>
+          
+
           <Input
             label="هل لديك خبرة برمجية ؟"
             invalid={errors.experience_in_programming}
