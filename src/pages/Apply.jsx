@@ -25,6 +25,8 @@ function Apply() {
 
   const [gender, setGender] = useState('');
 
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+
 
 
   const majorOptions = [
@@ -100,6 +102,8 @@ function Apply() {
 
   const [isSubmitToServerSuceess, setIsSubmitToServerSuceess] = useState(false);
 
+  const [lengthError, setLengthError] = useState('');
+
 
   const [isChecked, setIsChecked] = useState(false);
 
@@ -114,8 +118,34 @@ function Apply() {
     };
     fetchStatus()
   },[])
-  
 
+  const experienceInProgramming = watch('experience_in_programming', '');
+  const aboutMe = watch('about_me', '');
+  const experienceInDesign = watch('experience_in_design', '');
+  const volunteering = watch('volunteering', '');
+  const notes = watch('notes', '');
+
+  useEffect(() => {
+    if (experienceInProgramming.length > 1000) {
+      setLengthError('لا يمكن أن تتجاوز خانة "هل لديك حبرة برمجية؟" 1000 حرف');
+      setIsButtonDisabled(true);
+    } else if (aboutMe.length > 1000) {
+      setLengthError('لا يمكن أن تتجاوز خانة "تحدث عن نفسك" 1000 حرف');
+      setIsButtonDisabled(true);
+    } else if (experienceInDesign.length > 1000) {
+      setLengthError('لا يمكن أن تتجاوز خانة "هل لديك خبرة في التصميم والمونتاج؟" 1000 حرف');
+      setIsButtonDisabled(true);
+    } else if (volunteering.length > 1000) {
+      setLengthError('لا يمكن أن تتجاوز خانة "هل لديك اعمال تطوعية سابقة؟" 1000 حرف');
+      setIsButtonDisabled(true);
+    } else if (notes.length > 1000) {
+      setLengthError('لا يمكن أن تتجاوز خانة "أي ملاحظات؟" 1000 حرف');
+      setIsButtonDisabled(true);
+    } else {
+      setLengthError('');
+      setIsButtonDisabled(false);
+    }
+  }, [experienceInProgramming, aboutMe, experienceInDesign, volunteering, notes]);
 
   const isApplyingOpen = isChecked;
 
@@ -155,7 +185,7 @@ function Apply() {
       })
       .catch((error) => {
         // const arrayofErrors = Object.values(error.response.data).flat(1)
-        setServerErrors(error.response.data.detail);
+        setServerErrors(error?.response?.data?.detail);
         setIsSubmittingToServer(false);
       });
   };
@@ -179,7 +209,7 @@ function Apply() {
             {Object.keys(errors).length > 0 && (
               <Alert color="failure">{allErrors}</Alert>
             )}
-
+            {lengthError && <Alert color="failure">{lengthError}</Alert>}
             {isSubmitToServerSuceess && (
               <Alert color="success">
                 <div>تم الارسال بنجاح</div>
@@ -269,7 +299,12 @@ function Apply() {
             formHook={{
               ...register('experience_in_programming', {
                 required: 'الرجاء عدم ترك خانة "هل لديك حبرة برمجية ؟"',
+                maxLength:{
+                  value: 1000, // Set the maximum length to 1000 characters
+                  message: 'لا يمكن أن تتجاوز خانة "هل لديك حبرة برمجية؟" 1000 حرف',
+                },
               }),
+              
             }}
           />
           <Input
@@ -279,6 +314,10 @@ function Apply() {
             formHook={{
               ...register('about_me', {
                 required: 'الرجاء عدم ترك خانة "تحدث عن نفسك"',
+                maxLength: {
+                  value: 1000, // Set the maximum length to 1000 characters or any appropriate value
+                  message: 'لا يمكن أن تتجاوز خانة "تحدث عن نفسك" 1000 حرف',
+                },
               }),
             }}
           />
@@ -289,6 +328,10 @@ function Apply() {
             formHook={{
               ...register('experience_in_design', {
                 required: 'الرجاء عدم ترك خانة التصميم والمونتاج فارغة',
+                maxLength: {
+                  value: 1000, // Set the maximum length to 1000 characters or any appropriate value
+                  message: 'لا يمكن أن تتجاوز خانة "هل لديك خبرة في التصميم والمونتاج؟" 1000 حرف',
+                },
               }),
             }}
           />
@@ -299,20 +342,29 @@ function Apply() {
             formHook={{
               ...register('volunteering', {
                 required: 'الرجاء عدم ترك خانة الاعمال التطوعية فارغة',
+                maxLength: {
+                  value: 1000, // Set the maximum length to 1000 characters or any appropriate value
+                  message: 'لا يمكن أن تتجاوز خانة "هل لديك اعمال تطوعية سابقة؟" 1000 حرف',
+                },
               }),
             }}
           />
           <Input
             label="أي ملاحظات ؟"
             textarea
-            formHook={{ ...register('notes', {}) }}
+            formHook={{ ...register('notes', {}),
+            maxLength: {
+              value: 1000, // Set the maximum length to 1000 characters or any appropriate value
+              message: 'لا يمكن أن تتجاوز خانة "أي ملاحظات؟" 1000 حرف',
+            },
+          }}
           />
           <div className="w-full col-span-2 flex justify-center">
             <Button
               type="submit"
               primary
               className={`md:w-3/4 w-full flex justify-center disabled:opacity-25`}
-              disabled={!isApplyingOpen || isSubmittingToServer}
+              disabled={!isApplyingOpen || isSubmittingToServer || isButtonDisabled}
             >
               {!isSubmittingToServer && isApplyingOpen && <div>ارسال</div>}
               {isSubmittingToServer && (
