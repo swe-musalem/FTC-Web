@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 import axios from 'axios';
 import { parseISO, format } from 'date-fns';
+
 function Logs() {
   const [data, setData] = useState([]);
 

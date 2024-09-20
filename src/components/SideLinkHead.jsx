@@ -2,11 +2,11 @@
 import Button from "./Button";
 import React from 'react';
 import  { useState } from "react";
-
+import usePermission from '../hooks/use-permission'
 import { IoIosArrowBack,IoIosArrowDown  } from "react-icons/io";
 
 
-function SideLinkHead({to,title,SideIcon,children}) {
+function SideLinkHead({sideLink,title,SideIcon,children}) {
 
     const [isShown, setIsShown] = useState(false);
    
@@ -15,7 +15,11 @@ function SideLinkHead({to,title,SideIcon,children}) {
        setIsShown(!isShown)
        
     }
-    
+
+    const {isAllowed,isSideLinkVisible} = usePermission('Admin',sideLink)
+    if (!isSideLinkVisible) {
+        return
+    }
     
 
     

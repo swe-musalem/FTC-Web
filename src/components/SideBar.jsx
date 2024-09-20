@@ -1,4 +1,3 @@
-import { Outlet } from "react-router-dom";
 import img from "../assets/LogoBar.png"
 import { Divider } from "@tremor/react";
 import { HiMiniBars3BottomRight } from "react-icons/hi2";
@@ -14,8 +13,9 @@ import { useEffect, useRef } from "react";
 
 
 
-function SideBar() {
+function SideBar({Outlet}) {
 
+    
    
 
     return <div className="flex font-Cairo min-h-screen"  dir="rtl" >
@@ -31,12 +31,17 @@ function SideBar() {
                 <Divider className="px-2  text-ftc-surface">
                     اقوى داشبورد
                 </Divider>
-                <SideLinkHead title="التقديم"  SideIcon={<MdNewspaper/>} >
-                    <SideLinkChild title="الموجز" to={"/dashboard"}/>
+                {/* sideLink should match the endpoint of it */}
+                <SideLinkHead title="التقديم" sideLink='applicants'  SideIcon={<MdNewspaper/>} >
+                    <SideLinkChild title="الموجز" to={"/dashboard/home"}/>
                     <SideLinkChild title="المتقدمين"  to={"applicants"}/>
                 </SideLinkHead>
-                <SideLinkHead title="المستخدمين"  SideIcon={<RiUserSettingsFill/>} >
+                <SideLinkHead title="المستخدمين" sideLink='users'  SideIcon={<RiUserSettingsFill/>} >
                     <SideLinkChild title="السجل" to={"logs"} />
+                </SideLinkHead>
+                <SideLinkHead title="الاعضاء" sideLink='members' SideIcon={<RiUserSettingsFill/>} >
+                    <SideLinkChild title="إدارة الاعضاء" to={"members"} />
+                    <SideLinkChild title="إدارة اللجان" to={"committee"} />
                 </SideLinkHead>
                 
         </div>
