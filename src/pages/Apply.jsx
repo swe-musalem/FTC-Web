@@ -110,7 +110,7 @@ function Apply() {
   useEffect(()=>{
     const fetchStatus = async () => {
         try {
-            const response = await axios.get('https://ftc-api.onrender.com/status');
+            const response = await axios.get('https://ftc-api-1.onrender.com/status');
             setIsChecked(response.data.is_open);
         } catch (error) {
             console.error('Failed to fetch status', error);
@@ -166,12 +166,12 @@ function Apply() {
       commite:commite,
     };
     console.log(data);
-    // https://ftc-api.onrender.com
+    // https://ftc-api-1.onrender.com
 
     setIsSubmittingToServer(true);
     axios
-    // https://ftc-api.onrender.com/applicant
-      .post('https://ftc-api.onrender.com/applicant', data)
+    // https://ftc-api-1.onrender.com/applicant
+      .post('https://ftc-api-1.onrender.com/applicant', data)
       .then((res) => {
         if (isSubmitSuccessful || res.status === 200) {
           reset();

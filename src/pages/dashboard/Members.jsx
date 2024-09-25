@@ -51,7 +51,7 @@ export default function Members() {
 
   const fetchMembers = async () => {
       try {
-          const response = await fetch('http://127.0.0.1:8000/members');
+          const response = await fetch('https://ftc-api-1.onrender.com/members');
           if (!response.ok) {
               throw new Error('Failed to fetch members');
           }
@@ -73,7 +73,7 @@ export default function Members() {
 
     const handleDelete = async (email)=>{
       try {
-        const response = await fetch(`http://127.0.0.1:8000/members/delete/${email}`, {
+        const response = await fetch(`https://ftc-api-1.onrender.com/members/delete/${email}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
@@ -99,7 +99,7 @@ export default function Members() {
 
     const handlePoints =  async (points,email)=>{
         try {
-            const response = await fetch(`http://127.0.0.1:8000/members/${email}/points/${points}`, {
+            const response = await fetch(`https://ftc-api-1.onrender.com/members/${email}/points/${points}`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',

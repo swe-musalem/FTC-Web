@@ -8,7 +8,7 @@ import NotPermissioned from '../pages/NotPermissioned'
 import Loading from './Loading';
 function validateToken(token) {
   // go to fast api
-  return axios.post('https://ftc-api.onrender.com/validate_token/', null, {
+  return axios.post('https://ftc-api-1.onrender.com/validate_token/', null, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

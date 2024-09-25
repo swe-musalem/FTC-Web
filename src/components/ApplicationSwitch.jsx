@@ -7,7 +7,7 @@ const ApplicationSwitch = () => {
 
     const fetchStatus = async () => {
         try {
-            const response = await axios.get('https://ftc-api.onrender.com/status');
+            const response = await axios.get('https://ftc-api-1.onrender.com/status');
             setIsChecked(response.data.is_open);
         } catch (error) {
             console.error('Failed to fetch status', error);
@@ -16,7 +16,7 @@ const ApplicationSwitch = () => {
 
     const toggleStatus = async () => {
         try {
-            await axios.post('https://ftc-api.onrender.com/toggle-status');
+            await axios.post('https://ftc-api-1.onrender.com/toggle-status');
             setIsChecked(prev => !prev);
         } catch (error) {
             console.error('Failed to toggle status', error);

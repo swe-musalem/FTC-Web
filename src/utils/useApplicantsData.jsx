@@ -20,7 +20,7 @@ export default function useApplicantsData(params) {
     setIdStatusChanging(id);
     setIsStatusChanging(true);
     const response = await axios.put(
-      `https://ftc-api.onrender.com/applicants/${id}/accept`,
+      `https://ftc-api-1.onrender.com/applicants/${id}/accept`,
       '',
       {
         headers: {
@@ -44,7 +44,7 @@ export default function useApplicantsData(params) {
     setIdStatusChanging(id);
     setIsStatusChanging(true);
     const response = await axios.put(
-      `https://ftc-api.onrender.com/applicants/${id}/reject`,
+      `https://ftc-api-1.onrender.com/applicants/${id}/reject`,
       '',
       {
         headers: {
@@ -74,7 +74,7 @@ export default function useApplicantsData(params) {
 
   useEffect(() => {
     axios
-      .get('https://ftc-api.onrender.com/applicants', {
+      .get('https://ftc-api-1.onrender.com/applicants', {
         headers: {
           Authorization: `Bearer ${token}`,
         },

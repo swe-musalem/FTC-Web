@@ -11,7 +11,7 @@ function Logs() {
 
   useEffect(() => {
     const getData = async () => {
-      const response = await axios.get('https://ftc-api.onrender.com/logger', {
+      const response = await axios.get('https://ftc-api-1.onrender.com/logger', {
         headers: {
           Authorization: `Bearer ${token}`,
         },

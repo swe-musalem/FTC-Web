@@ -29,7 +29,7 @@ function Login() {
   const handleSubmit = () => {
     setIsLoading(true);
     axios
-      .post('https://ftc-api.onrender.com/login', {
+      .post('https://ftc-api-1.onrender.com/login', {
         user: username,
         password: password,
       })
