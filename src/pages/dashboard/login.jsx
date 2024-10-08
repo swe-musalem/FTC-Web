@@ -75,6 +75,7 @@ function Login() {
               icon={RiLockPasswordLine}
               placeholder="password"
               value={password}
+              type='password'
               onChange={handlePasswordChange}
             />
             <Button

@@ -15,6 +15,7 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast"
 import { PiUserPlusLight } from "react-icons/pi";
 import { CgSpinner } from "react-icons/cg";
+import img from '../../assets/FTCFocusedPrimary.png'
 
 import * as React from 'react';
 
@@ -67,7 +68,7 @@ export default function AddMember({ members, setMembers }) {
         title: `تم اضافة ${name}`,
         description: "يمكن للعضو الان الدخول بإستخدام التطبيق",
         className: "font-Cairo text-right text-gray-500 border border-ftcpallete-60",
-        action: <img src='https://pbs.twimg.com/profile_images/1824145399722000385/n9GjKc9U_400x400.jpg' className='w-20 h-20 rounded-lg' />
+        action: <img src={img} className='w-20 h-20 rounded-lg' />
       });
     } catch (error) {
       console.error('Failed to create the member:', error);
@@ -87,8 +88,8 @@ export default function AddMember({ members, setMembers }) {
   
 
   return (
-    <Dialog open={open}>
-      <DialogTrigger asChild onClick={()=>setOpen(true)}>
+    <Dialog >
+      <DialogTrigger asChild onClick={()=>setOpen(!open)}>
         <Button
           variant="outline"
           className="flex gap-x-2 my-2 text-ftcpallete-60 hover:text-ftcpallete-80"
@@ -163,7 +164,7 @@ export default function AddMember({ members, setMembers }) {
           </div>
         </div>
         <DialogFooter dir="rtl">
-          <DialogClose disabled={isLoading}>
+          <DialogClose disabled={isLoading} onClick={()=>setOpen(false)}>
             <Button
               type="submit"
               onClick={handleSubmit}

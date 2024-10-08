@@ -38,9 +38,9 @@ function Home() {
     pending:'بالانتظار',
   }
 
-    return <div className="bg-ftc-gray w-full px-20 py-10 h-screen overflow-y-auto" >
+    return <div className="bg-ftc-gray w-full px-20 py-10 h-full overflow-y-auto pt-[10%]" >
         <div className="text-3xl mb-4">المتقدمين</div>
-        <div className={`flex flex-col lg:flex-row gap-x-4  items-start h-screen  ${isLoading && 'animate-pulse h-screen'}`}>
+        <div className={`flex flex-col lg:flex-row gap-x-4  items-start h-full  ${isLoading && 'animate-pulse'}`}>
                 <Card className="md:w-full h-3/4 my-4 overflow-y-auto ">
                     <Table >
                     <TableHead>
@@ -99,7 +99,7 @@ function Home() {
                 </div>
         </div>
         <div>
-          <div className="text-3xl mt-8 mb-4 text-ftc-coal">الاحصائيات</div>
+          <div className="text-3xl mb-4 text-ftc-coal">الاحصائيات</div>
           <DonutChartComponent />
         </div>
        

@@ -83,7 +83,7 @@ function Applicants() {
  
 
 
-    return <div className="bg-ftc-gray w-full px-20 py-10 overflow-y-auto h-screen" >
+    return <div className="bg-ftc-gray w-full px-20 py-10 overflow-y-auto h-full pt-[10%]" >
         <Modal show={show} onClose={()=>{setShow(false)}} >
             <Modal.Header/>
             <div className="h-screen px-4 py-10 font-Cairo" dir="rtl">
@@ -101,8 +101,8 @@ function Applicants() {
             </div>
             <ApplicationSwitch/>
         </div>
-        <div className={`flex flex-col lg:flex-row gap-x-4 items-start h-5/6 ${isLoading && 'animate-pulse'}`}>
-                <Card className="md:w-full h-full overflow-y-auto">
+        <div className={`flex flex-col lg:flex-row gap-x-4 items-start h-5/6  ${isLoading && 'animate-pulse'}`}>
+                <Card className="md:w-full h-3/4 overflow-y-auto">
                     <div className=" flex gap-x-2">
                         <input placeholder={` 🔍 البحث بالرقم الجامعي`  } value={searchId} type="number" onChange={handleSearchChangeCollageId} className="rounded-md border focus:ring-1 border-slate-300 focus:outline-none placeholder:italic placeholder:text-slate-400" />
                         <input placeholder={` 🔍 البحث بالاسم`  } value={searchName} onChange={handleSearchChangeName} className="rounded-md border focus:ring-1 border-slate-300 focus:outline-none placeholder:italic placeholder:text-slate-400 px-2" />

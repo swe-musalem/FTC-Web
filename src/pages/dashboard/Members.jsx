@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {DataTable} from '../../components/members/table/data-table'
-
+import img from '../../assets/FTCFocusedPrimary.png'
 
 // import { ColumnDef } from "@tanstack/react-table"
 import {
@@ -87,6 +87,8 @@ export default function Members() {
         setMembers(members.filter(member => member.email !== email));
         toast({
           title: "تم حذف العضو",
+          className:'font-Cairo border border-red-300',
+          
         });
       } catch (error) {
         toast({
@@ -120,10 +122,9 @@ export default function Members() {
           })
           setMembers(newMembers)
           toast({
-                title: "Success",
-                description: "Member's points updated successfully.",
-                status: "success",
-                duration: 5000,
+                description: "تم تحديث نقاط العضو بنجاح",
+                duration: 2000,
+                className:'font-Cairo',
                 isClosable: true,
             });
 
@@ -133,6 +134,7 @@ export default function Members() {
                 title: "Error",
                 description: "Failed to update points.",
                 status: "error",
+                className:'font-Cairo',
                 duration: 5000,
                 isClosable: true,
             });
@@ -148,7 +150,7 @@ export default function Members() {
       header: () => <div className="text-right">الصورة</div>,
       cell: ({ row }) => {
         return <Avatar>
-        <AvatarImage src="https://i.imgflip.com/6abhrw.jpg" alt="@shadcn" />
+        <AvatarImage src={img} alt="@shadcn" />
         <AvatarFallback>CN</AvatarFallback>
       </Avatar>
       },
@@ -245,7 +247,7 @@ export default function Members() {
   
       
   return (
-    <div className='bg-ftc-gray h-screen w-full flex justify-center items-center '>
+    <div className='bg-ftc-gray h-screen w-full flex justify-center items-center pt-[10%]'>
         <div className='bg-ftc-surface h-[95%] w-[95%] rounded-xl shadow-xl p-4 overflow-y-scroll '>
             <AddMember members={members} setMembers={setMembers}/>
             {

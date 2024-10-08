@@ -10,7 +10,7 @@ function SideLinkHead({sideLink,title,SideIcon,children}) {
 
     const [isShown, setIsShown] = useState(false);
    
-    const boxStyle = `flex justify-center gap-x-2  rounded-md my-2 items-center w-3/4 hover:text-ftcpallete-70`
+    const boxStyle = `flex justify-between  gap-x-2 rounded-md my-2 items-center w-3/4 hover:text-ftc-secondary hover:transition-all ease-linear duration-100`
     const handleShown = ()=>{
        setIsShown(!isShown)
        
@@ -23,10 +23,10 @@ function SideLinkHead({sideLink,title,SideIcon,children}) {
     
 
     
-    return  <div className="flex flex-col justify-around  items-center cursor-pointer w-full text-white" onClick={handleShown}>
+    return  <div className="flex flex-col justify-between items-center cursor-pointer w-full text-ftc-primary " onClick={handleShown}>
                 <div className={`${boxStyle}`}>
-                    <Button >{title}</Button>
                     {SideIcon}
+                    <Button className='text-sm tracking-wider'>{title}</Button>
                     { !isShown &&<IoIosArrowBack/>}
                     { isShown &&<IoIosArrowDown/>}
                 </div>

@@ -13,7 +13,7 @@ function Input({textarea,label,className,invalid,formHook,...rest}) {
         <div className="text-ftc-secondary text-sm">{label}</div>
         
         {!textarea && <input {...rest}  {...formHook} className={classname}    />}
-        {textarea && <textarea  {...formHook} className="w-full bg-ftc-surface text-black h-24" rows="2"></textarea>}
+        {textarea && <textarea  {...formHook} className="w-full bg-ftc-surface text-black h-24 textarea" rows="2"></textarea>}
     </div>
 }
 

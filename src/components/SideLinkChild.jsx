@@ -5,7 +5,7 @@ import { useRef } from 'react';
 
 function SideLinkChild({SideIcon,title,children,...rest}) {
 
-    const boxStyle = `flex justify-between  w-3/5  rounded-md my-2 items-center hover:text-ftcpallete-70`
+    const boxStyle = `flex justify-between  w-3/5  rounded-md my-2 items-center hover:text-ftc-secondary hover:transition-all ease-linear duration-100 whitespace-nowrap`
 
     const activeClass = "backdrop-opacity-50 text-black bg-ftc-onSurface/20"
 

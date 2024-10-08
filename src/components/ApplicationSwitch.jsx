@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Switch from "react-switch";
+import { Switch } from "@/components/ui/switch"
 
 const ApplicationSwitch = () => {
     const [isChecked, setIsChecked] = useState(false);
@@ -28,22 +28,11 @@ const ApplicationSwitch = () => {
     }, []);
 
     return (
-        <label className='flex items-center my-4'>
+        <label className='flex items-center my-4 gap-x-4'>
             <span>حاله التقديم </span>
-            <Switch
-                onChange={toggleStatus}
-                checked={isChecked}
-                onColor="#86d3ff"
-                onHandleColor="#2693e6"
-                handleDiameter={30}
-                uncheckedIcon={false}
-                checkedIcon={false}
-                boxShadow="0px 1px 5px rgba(0, 0, 0, 0.6)"
-                activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
-                height={20}
-                width={48}
-                className="react-switch"
-            />
+             <div dir="ltr" className='flex justify-center items-center'>
+                    <Switch onCheckedchange={toggleStatus} checked={isChecked}/>
+                </div>
         </label>
     );
 };

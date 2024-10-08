@@ -5,6 +5,7 @@ import ProtectedRoute from "./components/ProtectedRoute"
 import SideBar from "./components/SideBar"
 import Applicants from "./pages/dashboard/Applicants"
 import Members from "./pages/dashboard/Members"
+import Activities from "./pages/dashboard/activities"
 import Logs from "./pages/dashboard/Logs"
 
 
@@ -21,6 +22,7 @@ function DashboardApp(){
                 <Route path="applicants" element={<Applicants/> } />
                 <Route path="members" element={<Members/> } />
                 <Route path="logs" element={<Logs/> } />
+                <Route path="activites" element={<Activities/> } />
             </Route>
         {/* </Route> */}
         <Route  path="login" element={<Login/>}></Route>

@@ -12,6 +12,11 @@ export default {
   	current: 'currentColor',
   	extend: {
   		colors: {
+			event:{
+				activity:'#6535BB',
+				scaleup:'#006971',
+				workshop:'#00639B'
+			},
   			ftcpallete: {
   				'10': '#24005B',
   				'20': '#3E0090',
@@ -34,6 +39,7 @@ export default {
   				surface: '#FBFDFD',
   				gray: '#F2F6FA',
   				coal: '#191C1D',
+				divider:'E0E0E0',
   				smoke: '#56606D',
   				green: '#12CA9E',
   				lightgreen: '#DEFFF9',
