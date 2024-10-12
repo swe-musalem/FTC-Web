@@ -4,7 +4,7 @@ import { createPortal } from "react-dom";
 function Footer() {
   return createPortal(
     <div
-      className="footer flex flex-col justify-center text-center h-28 bottom-0"
+      className="footer flex mt-14 left-0 right-0 flex-col justify-center text-center h-28 bottom-0"
       style={{
         background: "rgb(101, 53, 187);",
         background:

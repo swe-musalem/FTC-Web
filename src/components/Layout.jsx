@@ -6,9 +6,11 @@ import { Outlet } from "react-router-dom"
 function Layout() {
     return (
         <>
-            <Navbar/>
-            <Outlet/>
-            <Footer/>
+            <div dir="rtl">
+                <Navbar/>
+                <Outlet/>
+                <Footer/>
+            </div>
         </>
     )
 }

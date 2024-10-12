@@ -23,6 +23,15 @@ const students = [
     linkedin: "https://www.linkedin.com/in/lubbadrayan/",
     twitter: "https://twitter.com/LubbadRayan",
   },
+
+  {
+    name: "راكان الشنيبر",
+    img: s2,
+    skills: "أقوى نظم معلومات",
+    gradDate: "2027",
+    linkedin: "https://www.linkedin.com/in/nawafinity/",
+    twitter: "https://twitter.com/nawafinity",
+  },
   {
     name: "نواف محمد الخليفه",
     img: s2,
