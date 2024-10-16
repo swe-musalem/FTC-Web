@@ -9,8 +9,7 @@ import Activities from "./pages/dashboard/activities"
 
 import Logs from "./pages/dashboard/Logs"
 
-
-{/* <Route  element={<ProtectedRoute/>} ></Route> */}
+// DashboardApp
 
 function DashboardApp(){
 
