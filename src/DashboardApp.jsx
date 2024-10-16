@@ -6,6 +6,7 @@ import SideBar from "./components/SideBar"
 import Applicants from "./pages/dashboard/Applicants"
 import Members from "./pages/dashboard/Members"
 import Activities from "./pages/dashboard/activities"
+
 import Logs from "./pages/dashboard/Logs"
 
 
