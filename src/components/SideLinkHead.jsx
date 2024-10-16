@@ -6,7 +6,7 @@ import usePermission from '../hooks/use-permission'
 import { IoIosArrowBack,IoIosArrowDown  } from "react-icons/io";
 
 
-function SideLinkHead({sideLink,title,SideIcon,children}) {
+function SideLinkHead({sideLink,title,SideIcon,className,children}) {
 
     const [isShown, setIsShown] = useState(false);
    
@@ -23,7 +23,7 @@ function SideLinkHead({sideLink,title,SideIcon,children}) {
     
 
     
-    return  <div className="flex flex-col justify-between items-center cursor-pointer w-full text-ftc-primary " onClick={handleShown}>
+    return  <div className={`flex flex-col justify-between items-center cursor-pointer w-full text-ftc-primary ${className} `} onClick={handleShown}>
                 <div className={`${boxStyle}`}>
                     {SideIcon}
                     <Button className='text-sm tracking-wider'>{title}</Button>

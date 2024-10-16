@@ -39,7 +39,7 @@ export default {
   				surface: '#FBFDFD',
   				gray: '#F2F6FA',
   				coal: '#191C1D',
-				divider:'E0E0E0',
+				divider:'#E0E0E0',
   				smoke: '#56606D',
   				green: '#12CA9E',
   				lightgreen: '#DEFFF9',

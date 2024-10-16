@@ -31,7 +31,7 @@ const ApplicationSwitch = () => {
         <label className='flex items-center my-4 gap-x-4'>
             <span>حاله التقديم </span>
              <div dir="ltr" className='flex justify-center items-center'>
-                    <Switch onCheckedchange={toggleStatus} checked={isChecked}/>
+                    <Switch onCheckedChange={toggleStatus} checked={isChecked}/>
                 </div>
         </label>
     );

@@ -14,6 +14,7 @@ import {
     Text,
     DonutChart,
   } from "@tremor/react";
+  import { SiMicrosoftexcel } from "react-icons/si";
 
   import { Modal, Textarea } from 'flowbite-react';
 
@@ -99,9 +100,15 @@ function Applicants() {
                 <div>المتقدمين</div>
                 <MdOutlineSettings onClick={()=>{setShow(true)}}/>
             </div>
-            <ApplicationSwitch/>
+            <div className="flex items-center gap-x-12 ">
+                <ApplicationSwitch/>
+                <a href="https://ftc-api-1.onrender.com/download_applicants" className="flex items-center justify-between bg-green-500 px-2 py-1 rounded-lg gap-x-2">
+                    <p className="text-white "> اكسل</p>
+                    <SiMicrosoftexcel className="text-white"/>
+                </a>
+            </div>
         </div>
-        <div className={`flex flex-col lg:flex-row gap-x-4 items-start h-5/6  ${isLoading && 'animate-pulse'}`}>
+        <div className={`flex flex-col lg:flex-row gap-x-4 items-start h-[50rem]  ${isLoading && 'animate-pulse'}`}>
                 <Card className="md:w-full h-3/4 overflow-y-auto">
                     <div className=" flex gap-x-2">
                         <input placeholder={` 🔍 البحث بالرقم الجامعي`  } value={searchId} type="number" onChange={handleSearchChangeCollageId} className="rounded-md border focus:ring-1 border-slate-300 focus:outline-none placeholder:italic placeholder:text-slate-400" />
