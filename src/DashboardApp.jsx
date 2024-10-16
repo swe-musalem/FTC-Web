@@ -5,8 +5,7 @@ import ProtectedRoute from "./components/ProtectedRoute"
 import SideBar from "./components/SideBar"
 import Applicants from "./pages/dashboard/Applicants"
 import Members from "./pages/dashboard/Members"
-import Activities from "./pages/dashboard/activities"
-
+import Activities from "./pages/dashboard/Activities"
 import Logs from "./pages/dashboard/Logs"
 
 // DashboardApp
