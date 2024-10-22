@@ -64,9 +64,11 @@ export default function MapPicker({mapMarker,setMapMarker}) {
             </GoogleMapReact>
         </div>
             <Input placeholder="او الصق الرابط"  className="font-Cairo" dir="rtl"/>
-        <DialogFooter dir="rtl">
-          <Button type="submit" className="font-Cairo">حفظ الموقع</Button>
-        </DialogFooter>
+            <DialogTrigger>
+              <DialogFooter dir="rtl">
+                <Button type="submit" className="font-Cairo">حفظ الموقع</Button>
+              </DialogFooter>
+            </DialogTrigger>
       </DialogContent>
     </Dialog>
   )
