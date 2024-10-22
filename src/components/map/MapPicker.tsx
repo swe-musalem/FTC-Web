@@ -14,17 +14,21 @@ import * as React from 'react';
 import GoogleMapReact from 'google-map-react';
 
 import { useState } from "react";
-export default function MapPicker({mapMarker,setMapMarker}) {
+export default function MapPicker() {
 
   const [center, setCenter] = useState({ lat: 24.7229989, lng: 46.6195428 });
     const [zoom, setZoom] = useState(15);
-   
+    const [mapMarker, setMapMarker] = useState({
+      lat:  24.7229989,
+      lng: 46.6195428,
+      draggable: true
+  });
 
     const handleApiLoaded = (map, maps) => {
         const marker = new maps.Marker({
             position: { lat: mapMarker.lat, lng: mapMarker.lng },
             map,
-            draggable: false
+            draggable: true
         });
 
         marker.addListener('dragend', (e) => {
@@ -39,19 +43,20 @@ export default function MapPicker({mapMarker,setMapMarker}) {
       </DialogTrigger>
       <DialogContent className="w-[50%] h-[80%] " dir="rtl">
         <DialogHeader>
-         
+        <DialogTitle></DialogTitle>
         </DialogHeader>
         <div style={{ height: '50vh', width: '100%' }}>
             <GoogleMapReact
                 bootstrapURLKeys={{ key: 'AIzaSyCdp2zLpPVrgZG3cGNHfqAosU53LhiQq5k' }} // Replace 'YOUR_API_KEY' with your actual Google Maps API key
                 defaultCenter={center}
+                center={center}
                 defaultZoom={zoom}
                 yesIWantToUseGoogleMapApiInternals
                 onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
             >
               <div
                 className="text-xl"
-              >📍</div>
+              >FTC</div>
             </GoogleMapReact>
         </div>
             <Input placeholder="او الصق الرابط"  className="font-Cairo" dir="rtl"/>
