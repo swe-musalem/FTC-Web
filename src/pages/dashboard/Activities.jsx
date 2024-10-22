@@ -21,7 +21,11 @@ export default function Activities() {
     const [day, setDay] = useState('');
     const [membersOnly, setMembersOnly] = useState(false);
    
-
+    const [mapMarker, setMapMarker] = useState({
+        lat:  24.7229989,
+        lng: 46.6195428,
+        draggable: true
+    });
 
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
@@ -50,8 +54,8 @@ export default function Activities() {
                     day,
                     isMembersOnly: membersOnly,
                     eventType: eventType,
-                    // lat:MapPicker.lat,
-                    // lng:MapPicker.lng
+                    lat:MapPicker.lat,
+                    lng:MapPicker.lng
                 })
             });
             setTitle('')
@@ -114,7 +118,7 @@ export default function Activities() {
                             <Label htmlFor="r3">ورشة عمل</Label>
                         </div>
                     </RadioGroup>
-                    <MapPicker />
+                    <MapPicker mapMarker={mapMarker} setMapMarker={setMapMarker}/>
                     <div className='flex justify-center'>
                         <button 
                             onClick={handleSubmit}

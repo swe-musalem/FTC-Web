@@ -14,27 +14,28 @@ import * as React from 'react';
 import GoogleMapReact from 'google-map-react';
 
 import { useState } from "react";
-export default function MapPicker() {
+import { Marker } from "leaflet";
+export default function MapPicker({mapMarker,setMapMarker}) {
 
   const [center, setCenter] = useState({ lat: 24.7229989, lng: 46.6195428 });
     const [zoom, setZoom] = useState(15);
-    const [mapMarker, setMapMarker] = useState({
-      lat:  24.7229989,
-      lng: 46.6195428,
-      draggable: true
-  });
 
     const handleApiLoaded = (map, maps) => {
-        const marker = new maps.Marker({
-            position: { lat: mapMarker.lat, lng: mapMarker.lng },
-            map,
-            draggable: true
-        });
-
-        marker.addListener('dragend', (e) => {
-          setMapMarker({...mapMarker ,lat: e.latLng.lat(), lng: e.latLng.lng() });
-        });
-    };
+      const marker = new maps.Marker({
+          position: { lat: mapMarker.lat, lng: mapMarker.lng },
+          map,
+          draggable: false
+      });
+      marker.addListener('drag', (e) => {
+        // setMapMarker({ lat: e.latLng.lat(), lng: e.latLng.lng() });
+      });
+  };
+  const handleMapChange = ({ center, zoom }) => {
+    setCenter(center);
+    setMapMarker(center);  // Update mapMarker to new center after panning
+    console.log(center)
+  };
+  
 
   return (
     <Dialog >
@@ -49,17 +50,21 @@ export default function MapPicker() {
             <GoogleMapReact
                 bootstrapURLKeys={{ key: 'AIzaSyCdp2zLpPVrgZG3cGNHfqAosU53LhiQq5k' }} // Replace 'YOUR_API_KEY' with your actual Google Maps API key
                 defaultCenter={center}
-                center={center}
                 defaultZoom={zoom}
                 yesIWantToUseGoogleMapApiInternals
+                onChange={handleMapChange}
                 onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
             >
               <div
-                className="text-xl"
-              >FTC</div>
+                className="text-3xl"
+                lat={mapMarker.lat}
+                lng={mapMarker.lng}
+                
+              >📍</div>
             </GoogleMapReact>
         </div>
             <Input placeholder="او الصق الرابط"  className="font-Cairo" dir="rtl"/>
+            {mapMarker.lat}
         <DialogFooter dir="rtl">
           <Button type="submit" className="font-Cairo">حفظ الموقع</Button>
         </DialogFooter>
