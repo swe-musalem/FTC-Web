@@ -41,7 +41,7 @@ export default function Activities() {
         setLoading(true);
         setError(null);
         try {
-            const response = await fetch('https://ftc-api-1.onrender.com/activities/', {
+            const response = await fetch('http://127.0.0.1:8000/activities/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -54,8 +54,8 @@ export default function Activities() {
                     day,
                     isMembersOnly: membersOnly,
                     eventType: eventType,
-                    lat:MapPicker.lat,
-                    lng:MapPicker.lng
+                    lat:mapMarker.lat,
+                    lng:mapMarker.lng
                 })
             });
             setTitle('')

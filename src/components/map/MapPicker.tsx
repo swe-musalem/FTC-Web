@@ -35,7 +35,6 @@ export default function MapPicker({mapMarker,setMapMarker}) {
     setMapMarker(center);  // Update mapMarker to new center after panning
     console.log(center)
   };
-  
 
   return (
     <Dialog >
