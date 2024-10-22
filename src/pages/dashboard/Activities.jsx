@@ -10,7 +10,7 @@ import { CgSpinner } from "react-icons/cg";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import MemberPicker from '../../components/activities/MemeberPicker';
 import { useToast } from "@/hooks/use-toast";
-
+import MapPicker from '../../components/map/MapPicker'
 
 export default function Activities() {
     const [eventType, setEventType] = useState('activity');
@@ -20,6 +20,13 @@ export default function Activities() {
     const [date, setDate] = useState(new Date());
     const [day, setDay] = useState('');
     const [membersOnly, setMembersOnly] = useState(false);
+    const [mapMarker, setMapMarker] = useState({
+        lat:  24.7229989,
+        lng: 46.6195428,
+        draggable: false
+    });
+
+    const [mapLink, setMapLink] = useState()
 
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
@@ -47,7 +54,9 @@ export default function Activities() {
                     date: `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`,
                     day,
                     isMembersOnly: membersOnly,
-                    eventType: eventType
+                    eventType: eventType,
+                    lat:MapPicker.lat,
+                    lng:MapPicker.lng
                 })
             });
             setTitle('')
@@ -110,6 +119,7 @@ export default function Activities() {
                             <Label htmlFor="r3">ورشة عمل</Label>
                         </div>
                     </RadioGroup>
+                    <MapPicker mapMarker={mapMarker} setMapMarker={setMapMarker}/>
                     <div className='flex justify-center'>
                         <button 
                             onClick={handleSubmit}

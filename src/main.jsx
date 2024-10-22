@@ -5,7 +5,6 @@ import './index.css'
 import DashboardApp from './DashboardApp.jsx'
 import { Toaster } from "@/components/ui/toaster"
 
-
 import { BrowserRouter } from 'react-router-dom'
 
 
