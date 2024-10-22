@@ -64,7 +64,6 @@ export default function MapPicker({mapMarker,setMapMarker}) {
             </GoogleMapReact>
         </div>
             <Input placeholder="او الصق الرابط"  className="font-Cairo" dir="rtl"/>
-            {mapMarker.lat}
         <DialogFooter dir="rtl">
           <Button type="submit" className="font-Cairo">حفظ الموقع</Button>
         </DialogFooter>
