@@ -41,7 +41,7 @@ export default function Activities() {
         setLoading(true);
         setError(null);
         try {
-            const response = await fetch('http://127.0.0.1:8000/activities/', {
+            const response = await fetch('https://ftc-api-1.onrender.com/activities/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
