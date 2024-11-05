@@ -28,7 +28,6 @@ export default function MemeberPicker({value,setValue}) {
   useEffect(() => {
     fetchMembers();
 }, []); // Empty dependency array means this effect runs only once after the initial render
-console.log(value)
 const fetchMembers = async () => {
     try {
         const response = await fetch('https://ftc-api-1.onrender.com/members');
