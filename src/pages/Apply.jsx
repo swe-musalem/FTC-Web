@@ -57,20 +57,20 @@ function Apply() {
   ];
   const committeOptions = [
     {
-      label: 'اللجنه الاعلامية - التصميم وكتابه المحتوى',
-      dbvalue: 'اللجنه الاعلامية - التصميم وكتابه المحتوى',
+      label: 'اللجنة الإعلامية - فريق التصوير والمونتاج',
+      dbvalue: 'اللجنة الإعلامية - فريق التصوير والمونتاج',
     },
     {
-      label: 'اللجنه الاعلامية - التصوير والمونتاج',
-      dbvalue: 'اللجنه الاعلامية - التصوير والمونتاج',
+      label: 'اللجنة الإعلامية - فريق التصميم',
+      dbvalue: 'اللجنة الإعلامية - فريق التصميم',
     },
     // gender !== 'أنثى' && {
     //   label: 'لجنة الموارد البشرية - المقر',
     //   dbvalue: 'لجنة الموارد البشرية - المقر',
     // },
     {
-      label: 'لجنة الموارد البشرية - الفعاليات',
-      dbvalue: 'لجنة الموارد البشرية - الفعاليات',
+      label: 'اللجنة الإعلامية - فريق كتابة المحتوى',
+      dbvalue: 'اللجنة الإعلامية - فريق كتابة المحتوى',
     },
     {
       label: 'لجنة الموارد البشرية - الشؤون الداخلية',
@@ -83,6 +83,10 @@ function Apply() {
     {
       label: 'لجنة العلاقات العامة',
       dbvalue: 'لجنة العلاقات العامة',
+    },
+    {
+      label: 'لجنة الابتكار',
+      dbvalue: 'لجنة الابتكار',
     },
   ];
 
@@ -203,7 +207,7 @@ function Apply() {
       >
         {/* form box starts here */}
         <div className="text-ftc-primary text-xl ">التسجيل</div>
-        <div className="bg-ftc-surface  drop-shadow-xl px-4 py-4 rounded-md md:grid grid-cols-2 gap-x-2">
+        <div className="bg-ftc-surface  border px-4 py-4 rounded-md md: grid-cols-2 gap-x-2">
           <div className="w-full col-span-2 ">
             {/* this boolean expression checks the whole error object */}
             {Object.keys(errors).length > 0 && (
