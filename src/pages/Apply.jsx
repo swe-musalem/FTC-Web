@@ -207,7 +207,7 @@ function Apply() {
       >
         {/* form box starts here */}
         <div className="text-ftc-primary text-xl ">التسجيل</div>
-        <div className="bg-ftc-surface  border px-4 py-4 rounded-md md: grid-cols-2 gap-x-2">
+        <div className="bg-ftc-surface  border px-4 py-4 rounded-md md:grid md:grid-cols-2 gap-x-2">
           <div className="w-full col-span-2 ">
             {/* this boolean expression checks the whole error object */}
             {Object.keys(errors).length > 0 && (
